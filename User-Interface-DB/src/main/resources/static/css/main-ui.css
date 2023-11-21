@@ -1,0 +1,47 @@
+*{
+    margin: 5px auto;
+    padding: 30px;
+    box-sizing:border-box;
+    border: none;
+}
+
+body{
+    background-color:#fafdf7;
+    
+}
+
+
+
+
+.banner{
+    width: 65%;
+    height:500px;
+    margin: 0 auto;
+    text-align: center;
+    background-color:#f095b7;
+
+    padding:30px;
+    
+}
+.banner > div:nth-child(1){
+    height:50px;
+    margin-bottom:50px;
+}
+.banner > div:nth-child(2){
+    height:300px;
+    
+    vertical-align:center;
+}
+
+h2{
+    font-family: 'Gowun Dodum', sans-serif;
+    color: #fff;
+}
+
+h4{
+    color: #fff;
+    font-family: 'Gowun Dodum', sans-serif;
+    text-align: left;
+
+    margin-bottom:20px;
+}
