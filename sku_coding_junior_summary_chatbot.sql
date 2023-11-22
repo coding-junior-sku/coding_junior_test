@@ -39,4 +39,11 @@ ALTER TABLE chats ADD CONSTRAINT chat_room_id_foreign FOREIGN KEY(chat_room_id) 
 
 desc members;
 desc chats;
-insert into members (name,login_id,password) values('남기정''kjn','1234');
+
+/*실험 구간임->따라할 필요 없음*/
+select * from members;
+insert into members (name,login_id,password) values('남기정','kjn','1234');
+
+select * from chats;
+insert into chats(chat_room_id,writer_is_human,write_content) values(7,0,'챗봇 test1');
+insert into chats(chat_room_id,writer_is_human,write_content) values(7,0,'챗봇 test2');

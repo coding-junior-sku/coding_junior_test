@@ -10,6 +10,7 @@
 
 	<typeAliases>
 		<typeAlias type="com.example.userinterfacedb.model.MemberDTO" alias="memberDTO"/>
+		<typeAlias type="com.example.userinterfacedb.model.ChatDTO" alias="chatDTO"/>
 	</typeAliases>
 
 </configuration>
