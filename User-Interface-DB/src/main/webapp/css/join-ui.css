@@ -20,6 +20,8 @@ body{
     box-sizing: border-box;
 
     margin: 0 auto;
+
+    text-align:center;
 }
 
 .join-wrapper > h2{
@@ -39,8 +41,10 @@ body{
 #join-form > input::placeholder{
     color: #D2D2D2;
 }
-#join-form > input[type="submit"]{
-    color: #fff;
+#join-form > button#submitButton{
+    width:200px;
+    height:30px;
+    color: #F8F8F8;
     font-size: 16px;
     background-color: #f095b7;
     margin-top: 20px;
@@ -70,6 +74,6 @@ button {
 }
 
 .btn-gradient.mini {
-  padding: 4px 12px;  
-  font-size: 12px;
+    padding: 4px 12px;
+    font-size: 12px;
 }

@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&display=swap" rel="stylesheet">
 
     <script src="/resources/js/includeHTML.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     <!-- <div id="chatting_header">
@@ -26,14 +27,40 @@
     <div class="login-wrapper">
         <h2>Login</h2>
         <form method="post" id="login-form">
-            <input type="text" name="userId" placeholder="id">
-            <input type="password" name="userPassword" placeholder="Password">
-            <input type="submit" value="Login">
-            <input type="submit" value="회원가입">
+            <input type="text" name="loginId" placeholder="id">
+            <input type="password" name="password" placeholder="Password">
+            <button  class="submitButton" type="button" onclick="goLogin()">Login</button>
+            <button class="submitButton" type="button" onclick="goJoin()">회원가입</button>
         </form>
     </div>
 </body>
 <script>
-    includeHTML();
+
+    function goLogin(){
+        let form= $("#login-form");
+        form.attr("action","/loginOk");
+        form.attr("method","post");
+        form.submit();
+    }
+    function goJoin(){
+        location.href="/goJoin";
+    }
+
+
+
+
+    $(document).ready(function () {
+
+
+
+        //jstl 변수 값이 비어있으면 오류를 내는데
+        //오류를 안내면서 jstl 변수가 있는지 검사하거나 할당하려면 ''를 써준다.
+        let jstlFail='${fail}';
+        console.log(jstlFail);
+        if(jstlFail!='' && jstlFail=="fail"){
+            alert("로그인 실패했습니다");
+        }
+    });
+
 </script>
 </html>

@@ -13,10 +13,10 @@
 </head>
 <body>
     <div id="chatting_header">
-        <div id="cloud_logo" class="header_nav"><a href="#"></a></div>
-        <div class="header_nav"><a href="#">챗봇과 상담</a></div>
-        <div class="header_nav"><a href="#">로그인</a></div>
-        <div class="header_nav"><a href="#">회원가입</a></div>
+        <div id="cloud_logo" class="header_nav"><a href="/"></a></div>
+        <div class="header_nav"><a href="/goChatting">챗봇과 상담</a></div>
+        <div class="header_nav"><a href="/goLogin">로그인</a></div>
+        <div class="header_nav"><a href="/goJoin">회원가입</a></div>
     </div>
 
 </body>
