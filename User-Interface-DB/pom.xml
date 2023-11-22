@@ -80,14 +80,14 @@
 			<artifactId>jakarta.servlet.jsp.jstl</artifactId>
 			<version>3.0.1</version>
 		</dependency>
-
-		<!--이건 서블릿관련 httpsession,jsp쓸때 필요-->
+<!--
+		&lt;!&ndash;이건 서블릿관련 httpsession,jsp쓸때 필요&ndash;&gt;
 		<dependency>
 			<groupId>jakarta.servlet</groupId>
 			<artifactId>jakarta.servlet-api</artifactId>
 			<version>6.0.0</version>
 			<scope>provided</scope>
-		</dependency>
+		</dependency>-->
 
 		<!--thymeleaf를 기본설정으로 해서 tomcat에서 jsp쓰려면 추가해야함-->
 		<dependency>

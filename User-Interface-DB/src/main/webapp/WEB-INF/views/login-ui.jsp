@@ -48,11 +48,11 @@
 
 
 
-
-    $(document).ready(function () {
-
-
-
+    /*
+       .ready() Event는 1.8 버전에서는 deprecated 되었으며 3.0에서는 지원하지 않기 때문입니다.
+      출처: https://7942yongdae.tistory.com/77 [개발자 일지:티스토리]
+  */
+    $(function() {
         //jstl 변수 값이 비어있으면 오류를 내는데
         //오류를 안내면서 jstl 변수가 있는지 검사하거나 할당하려면 ''를 써준다.
         let jstlFail='${fail}';
@@ -60,6 +60,12 @@
         if(jstlFail!='' && jstlFail=="fail"){
             alert("로그인 실패했습니다");
         }
+
+
+    });
+    $(document).ready(function () {
+
+
     });
 
 </script>

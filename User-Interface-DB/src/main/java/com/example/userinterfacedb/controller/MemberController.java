@@ -34,10 +34,13 @@ public class MemberController {
         return "login-ui";
     }
 
-    @GetMapping("/goChatting")
-    public String goChatting(){
-        return "chatting-ui";
+
+    @GetMapping("/logout")
+    public String logout(HttpSession httpSession){
+        httpSession.removeAttribute("loginId");
+        return "redirect:/";
     }
+
 
 
     @PostMapping("/joinOk")
