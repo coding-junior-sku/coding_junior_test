@@ -12,6 +12,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&display=swap" rel="stylesheet">
 
     <script src="/resources/js/includeHTML.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
     <!-- <div id="chatting_header">
@@ -24,20 +25,72 @@
 
     <div class="join-wrapper">
         <h2>회원가입</h2>
-        <form method="post" id="join-form">
-            <input type="text" name="userName" placeholder="name">
-            <input type="number" name="userBirth" placeholder="생년월일 8자리">
-            <input type="text" name="userId" placeholder="id"> <br>
+        <form method="post" id="join-form" action="/joinOk" name="joinForm">
+            <input type="text" name="name" placeholder="name">
+    <%-- <input type="number" name="userBirth" placeholder="생년월일 8자리">--%>
+            <input type="text" name="loginId" placeholder="id"> <br>
             <p><span id="decide" style='color:#f095b7;'>ID 중복 여부를 확인해주세요.</span>
-               <input type="button" value="ID중복확인" class="btn-gradient red mini" onclick="checkId">
+               <input type="button" value="ID중복확인" class="btn-gradient red mini" onclick="checkId()">
             </p>
-            <input type="password" name="userPassword" placeholder="Password">
-            <input type="password" name="userPassword" placeholder="Password 확인">
-            <input type="submit" value="가입완료">
+            <input type="password" name="password" placeholder="Password">
+            <input type="password" name="passwordConfirm" placeholder="Password 확인">
+            <button id="submitButton" type="button" onclick="realSubmit(event)">가입완료</button>
+<%--            <input id="submit" type="text" readonly value="가입완료" onclick="submit(event)">--%>
         </form>
     </div>
 </body>
 <script>
-    includeHTML();
+    let checkIdOk=false;
+    function realSubmit(e){
+        //기본적으로 바로 submit하는걸 막고, 검사한후 submit한다
+        e.preventDefault();
+        let firstPassword=$("input[name='password']").val();
+        let confirmPassword=$("input[name='passwordConfirm']").val();
+        if(firstPassword==confirmPassword && checkIdOk==true){
+            console.log("회원가입 자격있음");
+             $('#join-form').submit();
+            // $('joinForm').submit();
+        }
+        else if(firstPassword!=confirmPassword && checkIdOk==true){
+            alert("비밀번호칸과 비밀번호 확인 칸의 내용이 다릅니다.");
+        }
+        else{
+            alert("회원가입 항목을 다시 확인해주세요");
+        }
+    }
+    function checkId(){
+
+        let loginId= $("input[name='loginId']").val();
+
+        $.ajax({
+            type: 'get',
+            url: '/checkId/'+loginId,
+            contentType: "application/json",
+            dataType: 'json',
+            success:function(result){
+                //중복됨
+                if(result==1){
+                    //태그제외하고 순수 안의 글자만 바꿈
+                    $('#decide').text('id가 중복 되었습니다');
+                    $('#decide').css('color','red');
+                    console.log(result);
+                    checkIdOk=false;
+                }
+                //중복안됨
+                else{
+                    $('#decide').text('id가 사용가능 합니다');
+                    $('#decide').css('color','#f095b7');
+                    console.log(result);
+                    checkIdOk=true;
+                }
+            },
+
+            error: function (request, status, error) {
+                console.log(error)
+            }
+        });
+
+    }
+
 </script>
 </html>

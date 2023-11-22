@@ -9,7 +9,7 @@
 	</settings>
 
 	<typeAliases>
-
+		<typeAlias type="com.example.userinterfacedb.model.MemberDTO" alias="memberDTO"/>
 	</typeAliases>
 
 </configuration>

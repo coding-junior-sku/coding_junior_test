@@ -24,9 +24,9 @@ public class UserInterfaceDbApplication {
 
 		// core.io
 		//여기서 mapperlocation에 넣을꺼를 mybatis config 파일이 포함안되게 조심
-		Resource[] resourceArray = new PathMatchingResourcePatternResolver().getResources("classpath:mybatis/*-Mapper.xml");
+		Resource[] resourceArray = new PathMatchingResourcePatternResolver().getResources("classpath:/mybatis/*-Mapper.xml");
 		sqlSessionFactory.setMapperLocations(resourceArray);
-		sqlSessionFactory.setConfigLocation(new PathMatchingResourcePatternResolver().getResource("classpath:mybatis/mybatis-config.xml"));
+		sqlSessionFactory.setConfigLocation(new PathMatchingResourcePatternResolver().getResource("classpath:/mybatis/mybatis-config.xml"));
 
 		return sqlSessionFactory.getObject();
 	}

@@ -19,6 +19,8 @@ body{
     padding: 40px;
     box-sizing: border-box;
     margin: 0 auto;
+
+    text-align:center;
 }
 
 .login-wrapper > h2{
@@ -38,7 +40,17 @@ body{
 #login-form > input::placeholder{
     color: #D2D2D2;
 }
-#login-form > input[type="submit"]{
+/*#login-form > input[type="submit"]{*/
+/*    color: #fff;*/
+/*    font-size: 16px;*/
+/*    background-color: #f095b7;*/
+/*    margin-top: 20px;*/
+/*}*/
+
+#login-form > button.submitButton{
+    width:200px;
+    height:30px;
+
     color: #fff;
     font-size: 16px;
     background-color: #f095b7;
