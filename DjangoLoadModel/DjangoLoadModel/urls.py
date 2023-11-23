@@ -19,5 +19,5 @@ from django.urls import path, include
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path('model/', include('deeplearning_model.urls')),
+    path('getSummaries/', include('deeplearning_model.urls')),
 ]

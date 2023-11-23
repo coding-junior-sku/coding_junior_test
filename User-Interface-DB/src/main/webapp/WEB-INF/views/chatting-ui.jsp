@@ -98,8 +98,12 @@
 
                         console.log(result);
                         console.log(result.result);
+
+                        //result 매개변수 자체가 자바스크립트 객체로 쓸수있어서 파싱이 필요하지 않다
                         //let getResult=JSON.parse(result);
                         //console.log(getResult);
+
+                        //사용자가 잘못된 키워드를 쳐서 뉴스 검색이 안된다면
                         if(result.result=="fail"){
                             console.log("result fail 들어옴");
                             let failGuide="뉴스기사를 찾지 못했습니다. 키워드를 정확히 입력해주세요. 또는 아직 해당 키워드에 관련된 기사가 적재되어있지 않습니다.";

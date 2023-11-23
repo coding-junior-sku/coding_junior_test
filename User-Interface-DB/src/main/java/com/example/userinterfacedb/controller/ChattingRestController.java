@@ -2,14 +2,21 @@ package com.example.userinterfacedb.controller;
 
 import com.example.userinterfacedb.model.ChatDTO;
 import com.example.userinterfacedb.model.NewsDTO;
+import com.example.userinterfacedb.model.NewsSummaryDTO;
 import com.example.userinterfacedb.service.ChatService;
 import com.example.userinterfacedb.service.NewsService;
+import com.google.gson.*;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.client.RestTemplate;
 
+import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
@@ -42,14 +49,10 @@ public class ChattingRestController {
 
 
         //사용자가 입력한 값을
-        //db에서 검색해서 django로 보내고, 챗봇에게 답변을 받아온다
+        //db에서 일단 검색해서 있는지, 없는지 부터 파악한다.
         String newsKeyword=chatDTO.getWriteContent();
         List<NewsDTO> newsList=newsService.findNews(newsKeyword);
-//        Iterator<NewsDTO> newsDTOIterator = newsList.iterator();
-//        while(newsDTOIterator.hasNext()){
-//            System.out.println(newsDTOIterator.next());
-//        }
-        System.out.println(newsList.toString());
+
 
         //사용자가 키워드를 정확히 입력하지 않았거나, 해당 키워드에 대한 뉴스가 적재되지 않았다면
         if(newsList==null || newsList.isEmpty()){
@@ -71,6 +74,63 @@ public class ChattingRestController {
         else{
             //django로 뉴스들을 보내고 , 챗봇에게 답변을 받아온다.
 
+            ArrayList<NewsSummaryDTO> newsSummaryDTOList = new ArrayList<>();
+            JsonArray jsonArray = new JsonArray();
+            Iterator<NewsDTO> newsDTOIterator = newsList.iterator();
+            while(newsDTOIterator.hasNext()){
+                //뉴스 기사를 하나 찾을때마다 미리 뉴스 요약 리스트에 넣어줌
+                //나중에 챗봇이 준 값으로 뉴스 요약 리스트에 기사내용을 넣을 것임
+                //뉴스 원문으로 요청을 보내야하기 때문에 json object에는 뉴스 원문을 미리 넣어주자
+                NewsSummaryDTO newsSummaryDTO= new NewsSummaryDTO();
+                NewsDTO newsDTO=newsDTOIterator.next();
+                newsSummaryDTO.setId(newsDTO.getId());
+                newsSummaryDTO.setNewsTitle(newsDTO.getNewsTitle());
+                newsSummaryDTO.setNewsWriteDate(newsDTO.getNewsWriteDate());
+                newsSummaryDTO.setNewsLink(newsDTO.getNewsLink());
+                newsSummaryDTOList.add(newsSummaryDTO);
+
+                JsonObject jsonObject = new JsonObject();
+                jsonObject.addProperty("description",newsDTO.getNewsDescription());
+
+                jsonArray.add(jsonObject);
+
+            }
+            System.out.println(newsSummaryDTOList.toString());
+
+
+            RestTemplate restTemplate= new RestTemplate();
+            HttpHeaders headers= new HttpHeaders();
+            headers.setContentType(MediaType.APPLICATION_JSON);
+
+
+            
+
+            HttpEntity<String> request= new HttpEntity<>(jsonArray.toString(),headers);
+            //jsonarrary를 string형태로 받는다
+            String response=restTemplate.postForObject("http://localhost:8000/getSummaries/",request,String.class);
+            System.out.println("response:"+response);
+            //JsonElement가 JsonObject를 가지고 있을 수도 , JsonArray를 가지고 있을 수도
+            //JsonElement가 상위 개념
+            JsonElement jsonElement = JsonParser.parseString(response);
+            System.out.println("jsonElement:"+jsonElement);
+            JsonArray responseJsonArray= jsonElement.getAsJsonArray();
+            System.out.println(responseJsonArray);
+
+            Gson gson = new Gson();
+            //JsonArray에서 하나 뽑은게 JsonElement
+            int i=0;
+            for(JsonElement e: responseJsonArray){
+                //일일이 필드를 뽑아서 자바 객체로 안바꾸고 한번에 바꾸는 법
+                //string형태로 넣어줘야한다
+                //목표하고자하는 자바 클래스
+                newsSummaryDTOList.get(i).setNewsSummary(e.getAsJsonObject().get("summary").getAsString());
+                i++;
+            }
+
+            System.out.println("프론트로 보내는 결과들");
+            System.out.println(newsSummaryDTOList);
+            //뉴스 요약 리스트들을 돌려주는 챗봇의 대화 내역 저장
+            //뉴스 요약 리스트들을 프론트단으로 보내서 출력한다
             return "{\"result\":\"success\"}";
         }
 
