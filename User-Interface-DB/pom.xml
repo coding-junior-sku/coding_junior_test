@@ -95,6 +95,13 @@
 			<artifactId>tomcat-embed-jasper</artifactId>
 		</dependency>
 
+		<!-- json을 자바객체로 바꿔주는 라이브러리-->
+		<dependency>
+			<groupId>com.google.code.gson</groupId>
+			<artifactId>gson</artifactId>
+			<version>2.10.1</version>
+		</dependency>
+
 	</dependencies>
 
 	<build>
