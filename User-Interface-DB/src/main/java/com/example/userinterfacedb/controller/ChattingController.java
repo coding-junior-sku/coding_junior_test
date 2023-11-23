@@ -22,6 +22,9 @@ public class ChattingController {
     }
     @GetMapping("/goChatting")
     public String goChatting(HttpSession httpSession, Model model){
+        if(httpSession.getAttribute("loginId")==null){
+            return "redirect:/goLogin";
+        }
         int chatRoomId= (int)httpSession.getAttribute("loginId");
         List<ChatDTO> chatDTOList=chatService.getChats(chatRoomId);
         model.addAttribute("chats",chatDTOList);

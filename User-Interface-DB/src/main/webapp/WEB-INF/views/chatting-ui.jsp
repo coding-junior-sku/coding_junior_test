@@ -81,11 +81,13 @@
             if(userQuestion !=''){
                 $.ajax({
                     type: 'post',
-                    url: '/insertChat',
+                    url: '/userInsertChat',
                     contentType: "application/json",
                     dataType: 'json',
                     data: JSON.stringify({writeContent:userQuestion}),
                     success:function(result){
+                        //제일 먼저 사용자가 친 내용을 채팅에 붙이고
+                        //그다음에 답변 내용을 채팅에 붙인다.
                         chattingContents.append('<div class="user"><span>'+userQuestion+'</span></div>');
                         /*
                         .scrollTop()은 선택한 요소의 스크롤바 수직 위치를 반환하거나 스크롤바 수직 위치를 정합니다.
@@ -93,6 +95,18 @@
                         출처: https://devbirdfeet.tistory.com/228 [새발개발자:티스토리]
                         */
                         chattingContents.scrollTop(chattingContents.prop('scrollHeight'));
+
+                        console.log(result);
+                        console.log(result.result);
+                        //let getResult=JSON.parse(result);
+                        //console.log(getResult);
+                        if(result.result=="fail"){
+                            console.log("result fail 들어옴");
+                            let failGuide="뉴스기사를 찾지 못했습니다. 키워드를 정확히 입력해주세요. 또는 아직 해당 키워드에 관련된 기사가 적재되어있지 않습니다.";
+
+
+                            chattingContents.append('<div class="chatbot"><span>'+failGuide+'</span></div>');
+                        }
                     },
 
                     error: function (request, status, error) {
