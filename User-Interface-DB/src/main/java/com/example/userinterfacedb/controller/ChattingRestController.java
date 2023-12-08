@@ -113,16 +113,26 @@ public class ChattingRestController {
             //JsonElement가 상위 개념
             JsonElement jsonElement = JsonParser.parseString(response);
             System.out.println("jsonElement:"+jsonElement);
+
             JsonArray responseJsonArray= jsonElement.getAsJsonArray();
             System.out.println(responseJsonArray);
 
-            Gson gson = new Gson();
+
             //JsonArray에서 하나 뽑은게 JsonElement
             int i=0;
             for(JsonElement e: responseJsonArray){
-                //일일이 필드를 뽑아서 자바 객체로 안바꾸고 한번에 바꾸는 법
-                //string형태로 넣어줘야한다
-                //목표하고자하는 자바 클래스
+
+                //json object로 안인식
+                ////"{\"summary\":\"OPECOPEC러시아가 전일 자발적 감산을 발표했지만 국제유가는 2 이상 급락했습니다.\\n이는 전일 OPEC가 일일 100만 배럴의 추가 감산을 발표했지만 자발적 감산이어서 회원국간 약속이 지켜지지 않을 것이란 전망 때문으로 풀이됩니다.\\n전일 OPEC는 추가로 일일 100만 배럴 모두 220만 배럴의 감산을 선언했으나 자발적 감산이라고 밝혔습니다.\"}"
+
+                //json object로 인식
+                //{"summary":"{\"summary\":\"OPECOPEC러시아가 전일 자발적 감산을 발표했지만 국제유가는 2 이상 급락했습니다.\\n이는 전일 OPEC가 일일 100만 배럴의 추가 감산을 발표했지만 자발적 감산이어서 회원국간 약속이 지켜지지 않을 것이란 전망 때문으로 풀이됩니다.\\n전일 OPEC는 추가로 일일 100만 배럴 모두 220만 배럴의 감산을 선언했으나 자발적 감산이라고 밝혔습니다.\"}"}
+                System.out.println("e:"+e);
+
+                //이렇게 접근못함
+                //System.out.println("e.get('summary'):"+e.get("summary"));
+
+                System.out.println("e.getAsJsonObject():"+e.getAsJsonObject());
                 newsSummaryDTOList.get(i).setNewsSummary(e.getAsJsonObject().get("summary").getAsString());
                 i++;
             }
