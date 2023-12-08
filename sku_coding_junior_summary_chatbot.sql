@@ -14,10 +14,10 @@ create table news (
 
 desc news;
 select * from news;
-select * from news where news_title='찾아';
+select * from news where news_title='';
 show table status where name = 'news';
 
-truncate news;
+#truncate news;
 
 
 create table members(
