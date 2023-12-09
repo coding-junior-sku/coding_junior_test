@@ -60,6 +60,15 @@
             <div id="input_button_section"><button id="submit_button">보내기</button></div>
         </div>
     </div>
+
+    <div id="loading_section">
+        <div>
+            <span>챗봇에게부터 답변을 받아오는 중입니다.</span>
+            <img src="/resources/images/loading_bar.gif">
+        </div>
+    </div>
+
+
 </body>
 <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
 <script>
@@ -73,12 +82,15 @@
         let chattingContents=$('#chatting_contents');
         chattingContents.scrollTop(chattingContents.prop('scrollHeight'));
 
-
+        let loadingDisplay=$('#loading_section');
 
         $('#submit_button').on('click',function(){
             let userQuestion = $('#user_question').val();
             //내용이 비어있지 않을때만 post ajax를 동작시킨다.
             if(userQuestion !=''){
+                //로딩중 화면 띄우기
+                loadingDisplay.css('z-index','2');
+                loadingDisplay.css('opacity','0.8');
                 $.ajax({
                     type: 'post',
                     url: '/userInsertChat',
@@ -146,6 +158,10 @@
 
 
                         }
+
+                        //로딩중 화면 숨기기
+                        loadingDisplay.css('z-index','-100');
+                        loadingDisplay.css('opacity','0');
                     },
 
                     error: function (request, status, error) {
