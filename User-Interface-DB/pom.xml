@@ -102,6 +102,17 @@
 			<version>2.10.1</version>
 		</dependency>
 
+
+		<!--jackson 라이브러리 필요=>자바객체를 json으로 변환-->
+		<!--jackson-databind 라이브러리는 jackson-core 및 jackson-annotation 라이브러리의 의존성을 포함하기 때문에 메이븐을 사용하는 경우 jackson-databind 라이브러리만 추가해주시면 됩니다.
+		출처: https://tychejin.tistory.com/134 [너나들이 개발 이야기:티스토리]-->
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-databind</artifactId>
+		</dependency>
+
+
+
 	</dependencies>
 
 	<build>
