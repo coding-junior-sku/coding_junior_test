@@ -97,19 +97,54 @@
                         chattingContents.scrollTop(chattingContents.prop('scrollHeight'));
 
                         console.log(result);
-                        console.log(result.result);
+
 
                         //result 매개변수 자체가 자바스크립트 객체로 쓸수있어서 파싱이 필요하지 않다
                         //let getResult=JSON.parse(result);
                         //console.log(getResult);
 
                         //사용자가 잘못된 키워드를 쳐서 뉴스 검색이 안된다면
-                        if(result.result=="fail"){
-                            console.log("result fail 들어옴");
+                        //result라는 키가 있는지 확인. 없으면 뉴스 요약 데이터이다
+                        //https://velog.io/@minong/Javascript-%EA%B0%9D%EC%B2%B4%EC%97%90-%ED%95%B4%EB%8B%B9-key%EA%B0%92%EC%9D%B4-%EC%A1%B4%EC%9E%AC%ED%95%98%EB%8A%94%EC%A7%80-%ED%99%95%EC%9D%B8%ED%95%98%EB%8A%94-%EB%B0%A9%EB%B2%95
+                        // if(result.hasOwnProperty('result') && result.result=="fail"){
+                        //     console.log("result fail 들어옴");
+                        //     let failGuide="뉴스기사를 찾지 못했습니다. 키워드를 정확히 입력해주세요. 또는 아직 해당 키워드에 관련된 기사가 적재되어있지 않습니다.";
+                        //
+                        //
+                        //     chattingContents.append('<div class="chatbot"><span>'+failGuide+'</span></div>');
+                        // }
+                        //
+                        // else{
+                        //
+                        // }
+
+                        //result 즉 newsSummaryDTOList가 null이면 바로 뉴스기사를 찾지 못했다는 채팅 내역 붙여서 올리기
+                        if(result==null){
                             let failGuide="뉴스기사를 찾지 못했습니다. 키워드를 정확히 입력해주세요. 또는 아직 해당 키워드에 관련된 기사가 적재되어있지 않습니다.";
-
-
                             chattingContents.append('<div class="chatbot"><span>'+failGuide+'</span></div>');
+                        }
+                        //newsSummaryDTOList가 null이 아니면 바로 뉴스기사를 찾은 채팅 내역 붙여서 올리기
+                        else{
+                            let content="";
+                            let count=0;
+                            for(let newsSummaryDTO of result) {
+                                //윈도우 개행문자 \r\n
+                                //웹에서 인식할때 <br>로 인식해서 줄바꿈이 되도록
+                                content += "뉴스기사:" + (count + 1) + "<br/>";
+                                content += "제목:" + newsSummaryDTO.newsTitle+ "<br/>";
+                                content +="요약:"+newsSummaryDTO.newsSummary+ "<br/>";
+                                content +="원문링크:<a style='text-decoration-line : none;' href='"+newsSummaryDTO.newsLink+"'>"+newsSummaryDTO.newsLink+"</a><br/>";
+                                count = count + 1;
+
+                                console.log("content:"+content);
+
+                                chattingContents.append('<div class="chatbot"><span>'+content+'</span></div>');
+
+                                //내용 초기화 해서 다른 기사 받기
+                                content="";
+                            }
+
+
                         }
                     },
 

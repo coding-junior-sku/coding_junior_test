@@ -37,7 +37,7 @@ public class ChattingRestController {
         this.newsService=newsService;
     }
     @PostMapping("/userInsertChat")
-    public String userInsertChat(@RequestBody ChatDTO chatDTO, HttpSession httpSession){
+    public List<NewsSummaryDTO> userInsertChat(@RequestBody ChatDTO chatDTO, HttpSession httpSession){
         int chatRoomId= (int)httpSession.getAttribute("loginId");
         //로그인아이디 멤버숫자->채팅방 번호
         //사람이 쓴 글이면 1을 넣어준다
@@ -67,8 +67,10 @@ public class ChattingRestController {
             chatbotChatDTO.setWriteContent(failGuide);
 
             chatService.insertChat(chatbotChatDTO);
-            return "{\"result\":\"fail\"}";
-
+            NewsSummaryDTO newsSummaryDTO= null;
+            ArrayList<NewsSummaryDTO> newsSummaryDTOList = null;
+            //return "{\"result\":\"fail\"}";
+            return newsSummaryDTOList;
         }
         
         else{
@@ -139,9 +141,40 @@ public class ChattingRestController {
 
             System.out.println("프론트로 보내는 결과들");
             System.out.println(newsSummaryDTOList);
+
             //뉴스 요약 리스트들을 돌려주는 챗봇의 대화 내역 저장
+            ChatDTO chatbotChatDTO = new ChatDTO();
+            //로그인아이디 멤버숫자->채팅방 번호
+            //챗봇이 쓴 글이면 0을 넣어준다
+            chatbotChatDTO.setChatRoomId(chatRoomId);
+            chatbotChatDTO.setWriterIsHuman(0);
+            String content="";
+            int count=0;
+            for(NewsSummaryDTO newsSummaryDTO :newsSummaryDTOList) {
+                //윈도우 개행문자 \r\n
+                //웹에서 인식할때 <br>로 인식해서 줄바꿈이 되도록
+                content += "뉴스기사:" + (count + 1) + "<br/>";
+                content += "제목:" + newsSummaryDTOList.get(count).getNewsTitle()+ "<br/>";
+                content +="요약:"+newsSummaryDTOList.get(count).getNewsSummary()+ "<br/>";
+                content +="원문링크:<a style='text-decoration-line : none;' href='"+newsSummaryDTOList.get(count).getNewsLink()+"'>"+newsSummaryDTOList.get(count).getNewsLink()+"</a><br/>";
+                count = count + 1;
+
+                System.out.println("content:"+content);
+                
+                //뉴스기사 하나당 대화 한개씩 쳐서 db에 넣기
+                chatbotChatDTO.setWriteContent(content);
+                chatService.insertChat(chatbotChatDTO);
+
+                //내용 초기화 해서 다른 기사 받기
+                content="";
+            }
+
+
+
+
             //뉴스 요약 리스트들을 프론트단으로 보내서 출력한다
-            return "{\"result\":\"success\"}";
+            //jackson 라이브러리 필요=>자바객체를 json으로 변환
+            return newsSummaryDTOList;
         }
 
 
