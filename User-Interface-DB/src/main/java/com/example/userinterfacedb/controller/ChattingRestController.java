@@ -67,9 +67,10 @@ public class ChattingRestController {
             chatbotChatDTO.setWriteContent(failGuide);
 
             chatService.insertChat(chatbotChatDTO);
-            NewsSummaryDTO newsSummaryDTO= null;
+
             ArrayList<NewsSummaryDTO> newsSummaryDTOList = null;
             //return "{\"result\":\"fail\"}";
+            System.out.println("null객체를 프론트에 보낸다");
             return newsSummaryDTOList;
         }
         

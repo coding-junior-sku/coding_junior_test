@@ -91,6 +91,17 @@
                 //로딩중 화면 띄우기
                 loadingDisplay.css('z-index','2');
                 loadingDisplay.css('opacity','0.8');
+
+                //제일 먼저 사용자가 친 내용을 채팅에 붙이고
+                //그다음에 답변 내용을 채팅에 붙인다.
+                chattingContents.append('<div class="user"><span>'+userQuestion+'</span></div>');
+                /*
+                .scrollTop()은 선택한 요소의 스크롤바 수직 위치를 반환하거나 스크롤바 수직 위치를 정합니다.
+                화면 바깥으로 삐져나간 부분까지 포함해서 전체 글의 길이를 scrollHeight 라고 비유해볼 수 있겠다.
+                출처: https://devbirdfeet.tistory.com/228 [새발개발자:티스토리]
+                */
+                chattingContents.scrollTop(chattingContents.prop('scrollHeight'));
+
                 $.ajax({
                     type: 'post',
                     url: '/userInsertChat',
@@ -98,15 +109,6 @@
                     dataType: 'json',
                     data: JSON.stringify({writeContent:userQuestion}),
                     success:function(result){
-                        //제일 먼저 사용자가 친 내용을 채팅에 붙이고
-                        //그다음에 답변 내용을 채팅에 붙인다.
-                        chattingContents.append('<div class="user"><span>'+userQuestion+'</span></div>');
-                        /*
-                        .scrollTop()은 선택한 요소의 스크롤바 수직 위치를 반환하거나 스크롤바 수직 위치를 정합니다.
-                        화면 바깥으로 삐져나간 부분까지 포함해서 전체 글의 길이를 scrollHeight 라고 비유해볼 수 있겠다.
-                        출처: https://devbirdfeet.tistory.com/228 [새발개발자:티스토리]
-                        */
-                        chattingContents.scrollTop(chattingContents.prop('scrollHeight'));
 
                         console.log(result);
 
@@ -130,16 +132,17 @@
                         //
                         // }
 
-                        //result 즉 newsSummaryDTOList가 null이면 바로 뉴스기사를 찾지 못했다는 채팅 내역 붙여서 올리기
-                        if(result==null){
-                            let failGuide="뉴스기사를 찾지 못했습니다. 키워드를 정확히 입력해주세요. 또는 아직 해당 키워드에 관련된 기사가 적재되어있지 않습니다.";
-                            chattingContents.append('<div class="chatbot"><span>'+failGuide+'</span></div>');
-                        }
+                        //result 즉 newsSummaryDTOList가 null이면 success 부분이 아니라 바로 error로 가서  error 코드 안에서 처리를 해줘야한다.
+                        // if(result==null){
+                        //     console.log('result null 들어옴');
+                        //     let failGuide="뉴스기사를 찾지 못했습니다. 키워드를 정확히 입력해주세요. 또는 아직 해당 키워드에 관련된 기사가 적재되어있지 않습니다.";
+                        //     chattingContents.append('<div class="chatbot"><span>'+failGuide+'</span></div>');
+                        // }
                         //newsSummaryDTOList가 null이 아니면 바로 뉴스기사를 찾은 채팅 내역 붙여서 올리기
-                        else{
-                            let content="";
-                            let count=0;
-                            for(let newsSummaryDTO of result) {
+
+                        let content="";
+                        let count=0;
+                        for(let newsSummaryDTO of result) {
                                 //윈도우 개행문자 \r\n
                                 //웹에서 인식할때 <br>로 인식해서 줄바꿈이 되도록
                                 content += "뉴스기사:" + (count + 1) + "<br/>";
@@ -154,20 +157,30 @@
 
                                 //내용 초기화 해서 다른 기사 받기
                                 content="";
-                            }
-
-
                         }
+
+
+
 
                         //로딩중 화면 숨기기
                         loadingDisplay.css('z-index','-100');
                         loadingDisplay.css('opacity','0');
                     },
 
+                    //result 즉 newsSummaryDTOList가 null이면 바로 뉴스기사를 찾지 못했다는 채팅 내역 붙여서 올리기
                     error: function (request, status, error) {
                         console.log(error)
+                        console.log('result null 들어옴');
+                        let failGuide="뉴스기사를 찾지 못했습니다. 키워드를 정확히 입력해주세요. 또는 아직 해당 키워드에 관련된 기사가 적재되어있지 않습니다.";
+                        chattingContents.append('<div class="chatbot"><span>'+failGuide+'</span></div>');
+
+                        //로딩중 화면 숨기기
+                        loadingDisplay.css('z-index','-100');
+                        loadingDisplay.css('opacity','0');
                     }
                 });
+
+
             }
 
             else{
