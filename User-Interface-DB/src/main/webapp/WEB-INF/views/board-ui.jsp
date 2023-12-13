@@ -107,16 +107,36 @@
         </div>
         -->
             <ul class="number">
-                <li><a href="#"><</a></li>
-                <li><a href="#" class="active">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li><a href="#">&gt;</a></li>
+                <c:if test="${pagination.prev eq true}" >
+                    <li><button class="pageButton" href="${pagination.startPage-1}"><</button></li>
+                </c:if>
+                <c:forEach var="page" begin="${pagination.startPage}" end="${pagination.endPage}" step="1">
+                    <!--현재 페이지랑 해당하는 버튼은 active class 추가해서 버튼에 색깔을 입힌다.-->
+                    <c:choose>
+                        <c:when test="${pagination.criteria.page==page}">
+                            <li><button  class="pageButton active" disabled >${page}</button></li>
+                        </c:when>
+                        <c:otherwise>
+                            <li><button class="pageButton" href="${page}">${page}</button></li>
+                        </c:otherwise>
+                    </c:choose>
+
+                </c:forEach>
+
+                <c:if test="${pagination.next eq true}">
+                    <li><button class="pageButton" href="${pagination.endPage+1}">&gt;</button></li>
+                </c:if>
+
             </ul>
         </div>
     </div>
+
+    <form action="/goBoardList" name="pageForm">
+        <input type="hidden" name="page">
+        <!--원래 criteria amount값이 들어가도록-->
+        <input type="hidden" name="amount" value="${pagination.criteria.amount}">
+    </form>
+
 </body>
 <script>
 
@@ -124,6 +144,12 @@
        location.href="/goBoardWrite";
     });
 
-
+    $('.number').on('click','.pageButton',function(e){
+        console.log("페이지 버튼 눌림");
+        e.preventDefault();
+        $(document.pageForm.page).val($(this).attr('href'));
+        document.pageForm.submit();
+        console.log("페이지 이동 서브밋함");
+    });
 </script>
 </html>

@@ -24,10 +24,18 @@ public class BoardController {
         if(criteria.getPage() == 0){
             criteria.create(1, 5);
         }
-
+        //startindex를 계산해야하기때문
+        else{
+            int currentPage=criteria.getPage();
+            int currentAmount=criteria.getAmount();
+            criteria.create(currentPage,currentAmount);
+        }
+        
         List<BoardDTO> boardDTOList= boardService.selectBoardByPage(criteria);
         model.addAttribute("boardList",boardDTOList);
         model.addAttribute("pagination",new PageDTO().createPageDTO(criteria,boardService.getTotalBoardCount() ) );
+        System.out.println("criteria:"+criteria);
+        System.out.println("pagination:"+new PageDTO().createPageDTO(criteria,boardService.getTotalBoardCount() ));
         return "board-ui";
     }
     @GetMapping("/goBoardWrite")
