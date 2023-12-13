@@ -1,0 +1,369 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+
+}
+
+body{
+    background-color:#fafdf7;
+    font-family: 'Gowun Dodum', sans-serif;
+}
+
+/* 스크롤바 전체 영역 
+커스텀 스크롤바 스타일링을 하겠다는 기본 속성 이다. 이 설정이 없으면 다른 모든 것은 비활성화 된다.
+출처: https://inpa.tistory.com/entry/CSS-🌟-스크롤-바Scrollbar-꾸미기-속성-총정리 [Inpa Dev 👨‍💻:티스토리]
+*/
+::-webkit-scrollbar {
+    width: 10px;  /* 세로축 스크롤바 폭 너비 */
+    height: 10px;  /* 가로축 스크롤바 폭 너비 */
+}
+
+/* 스크롤바 막대 */
+::-webkit-scrollbar-thumb {
+    background: #f8c9df; /* 스크롤바 막대 색상 */
+    border: 2px solid #f8c9df; /* 스크롤바 막대 테두리 설정  */
+    border-radius: 12px 12px 12px 12px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+	background-color:#f095b7;
+}
+
+/* 스크롤이 움직이는 뒷 배경 */
+::-webkit-scrollbar-track {
+	background: #F7E2E1; /* 스크롤바 뒷 배경 색상 */
+}
+
+#section{
+    width:1000px;
+    height:2000px;
+
+    margin: 0 auto;
+
+}
+
+#bigTitle{
+    width:100%;
+    height:100px;
+
+}
+
+#bigTitle > h2{
+    height:70px;
+
+    padding:30px 0px 0px;
+}
+
+#container{
+    width:100%;
+    height:450px;
+}
+
+#containerBody{
+    width:100%;
+    height:350px;
+}
+
+#header{
+    width:100%;
+    height:70px;
+
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+    padding: 20px 140px 20px 20px;
+}
+
+#header>h3{
+    display:inline-block;
+
+    font-size: 18px;
+    font-weight: bold;
+    color: #222222;
+}
+
+#header>h4{
+    display:inline-block;
+
+    font-size: 18px;
+    font-weight: bold;
+    color: #222222;
+}
+
+#header>span{
+    display: inline-block;
+    font-size: 12px;
+    font-weight: normal;
+    color: #666666;
+    padding-left: 5px;
+    vertical-align: bottom;
+}
+
+#content{
+    width:100%;
+    height:210px;
+
+    margin-top:10px;
+    margin-bottom:10px;
+
+    text-align:center;
+
+    font-size:20px;
+
+    /*스크롤기능이 필요없을 때는 스크롤이 숨겨지고,
+    스크롤기능이 필요할 때는 스크롤이 보이도록*/
+    overflow-y: auto;
+}
+
+#alertSection{
+    width:100%;
+    height:50px;
+
+    text-align:right;
+
+    
+} 
+#alertSection>div{
+    /*자식들의 수직높이를 맞추기 위해 억지로 쓴다.*/
+    display:flex;
+    align-items: center;
+    justify-content: right;
+
+    /*vertical-align 속성은 수직 정렬을 지정하는 속성입니다. 수직 정렬을 해야하기 때문에 
+    inline이나 inline-block 또는 table-cell 엘리먼트에만 적용됩니다. block에는 쓸 수 없다는 건 안 비밀~*/
+    /* vertical-align:middle;  */
+    /* line-height:50px; */
+}
+
+#alertSection>div>span{
+    display:inline-block;
+    width:70px;
+    height:50px; 
+
+    line-height:50px;
+
+}
+
+#alertSection>div>image{
+    display:inline-block;
+    width:48px;
+    height:48px;
+}
+
+#containerButton{
+    border-top: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;
+    border-radius: 3px;
+
+    margin-top:10px;
+    margin-bottom:10px;
+
+    width:100%;
+    height:60px;
+    text-align:right;
+}
+
+#containerButton button{
+    display:inline-block;
+    width:70px;
+    height:40px;
+
+    margin-top:10px;
+    margin-right:20px;
+    color: #fff;
+    font-size: 16px;
+    background-color: #f095b7;
+    border:1px solid #f095b7;
+}
+
+#writeComment{
+    width:100%;
+    height:110px;
+
+    padding-top:10px;
+
+    text-align:center;
+
+    /*자식들의 수직높이를 맞추기 위해 억지로 쓴다.*/
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#writeComment > textarea{
+    resize:none;
+
+    width:800px;
+    height:100px;
+
+    margin-right:20px;
+
+
+    border: 1px solid #dddddd;
+    border-radius: 3px;
+
+}
+
+#writeComment > button{
+    display:inline-block;
+    width:100px;
+    height:40px;
+
+    color: #fff;
+    font-size: 16px;
+    background-color: #f095b7;
+    border:1px solid #f095b7;
+}
+
+#CommentSection{
+    width:100%;
+    height:1200px;
+
+    margin-top:20px;
+
+}
+
+.comment{
+    width:800px;
+    height:400px;
+
+    margin: 10px auto;
+
+    border-top: 1px solid #dddddd;
+}
+
+.commentHeader{
+    width:100%;
+    height:50px;
+
+    margin: 0 0 20px;
+}
+
+.commentHeader>div:nth-child(1){
+    height:12px;
+    margin: 0 0 10px;
+
+    font-size:12px;
+}
+
+.commentHeader>div:nth-child(2){
+    height:10px;
+
+    font-size:10px;
+}
+
+.commentContent{
+    width:100%;
+    height:200px;
+
+    /*스크롤기능이 필요없을 때는 스크롤이 숨겨지고,
+    스크롤기능이 필요할 때는 스크롤이 보이도록*/
+    overflow-y: auto;
+
+    margin-bottom:20px;
+}
+
+.commentAlert{
+    width:100%;
+    height:30px;
+
+    text-align:right;
+
+    margin-bottom:20px;
+}
+
+.commentAlert>div{
+    /*자식들의 수직높이를 맞추기 위해 억지로 쓴다.*/
+    display:flex;
+    align-items: center;
+    justify-content: right;
+
+    /*vertical-align 속성은 수직 정렬을 지정하는 속성입니다. 수직 정렬을 해야하기 때문에 
+    inline이나 inline-block 또는 table-cell 엘리먼트에만 적용됩니다. block에는 쓸 수 없다는 건 안 비밀~*/
+    /* vertical-align:middle;  */
+    /* line-height:50px; */
+}
+
+.commentAlert>div>span:nth-child(1){
+    display:inline-block;
+    width:70px;
+    height:30px; 
+
+    line-height:30px;
+
+}
+
+.commentAlert>div>span:nth-child(2){
+    display:inline-block;
+    width:30px;
+    height:30px;
+
+    background-repeat: no-repeat;
+    background-image: url('/resources/images/alert_icon.png');
+    background-size:contain;
+}
+
+.commentButton{
+    margin-top:10px;
+    margin-bottom:10px;
+
+    width:100%;
+    height:40px;
+    text-align:right;
+}
+
+.commentButton button{
+    display:inline-block;
+    width:100px;
+    height:40px;
+
+    color: #fff;
+    font-size: 16px;
+    background-color: #f095b7;
+    border:1px solid #f095b7;
+}
+
+#commentPaging{
+    width:100%;
+    height:30px;
+
+    margin-top:50px;
+
+
+     /*자식들의 수직높이를 맞추기 위해 억지로 쓴다.*/
+    display:flex;
+    align-items: center;
+    justify-content: center;
+ 
+
+}
+
+#commentPaging button{
+    display:inline-block;
+    width:30px;
+    height:30px;
+
+    margin-left:10px;
+
+    
+    font-size: 16px;
+    background-color:#F7E2E1;
+    border:0;
+}
+
+#commentPrevious{
+    background-repeat: no-repeat;
+    background-image: url('/resources/images/left_arrow_icon.png');
+    background-size:contain;
+    /*우선순위 강제적용 -> 배경색 없애기 */
+    background-color: transparent !important;
+}
+
+#commentNext{
+    background-repeat: no-repeat;
+    background-image: url('/resources/images/right_arrow_icon.png');
+    background-size:contain;
+    /*우선순위 강제적용 -> 배경색 없애기 */
+    background-color: transparent !important;
+}

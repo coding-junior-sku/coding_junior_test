@@ -1,0 +1,78 @@
+
+a {
+    color: #f095b7; /* 글자 색생은 부모로부터 상속 */
+    text-decoration: none;
+}
+
+body {
+    display: block;
+    background-color:#fafdf7;
+}
+
+.card {
+    width: 600px;
+    height: 600px;
+    margin: 100px auto;
+
+    box-shadow: 3px 3px 50px #e6e6e6;
+
+    border-radius: 20px;
+    position: relative; /* 상대적인 값 */
+}
+
+.card-header {
+    padding: 20px;
+    text-align: center;
+}
+
+.card-header h1 {
+    font-size: 30px;
+    font-weight: 600;
+}
+
+
+.card-write {
+    padding: 20px;
+}
+
+.card-write input, textarea{
+    margin-left: 10px;
+    padding: 10px;
+    border: 1px solid #999;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px #e6e6e6;
+}
+
+
+.card-write .title input[type="text"] {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    width: 85.5%;
+}
+
+.card-write .msg textarea {
+    min-width: 85.5%;
+    max-width: 85.5%;
+    min-height: 350px;
+    max-height: 350px;
+    box-shadow: inset 3px 3px 10px #e6e6e6;
+    resize: none;
+    /* vertical-align: 텍스트를 수직, 수평 정렬 할 수 있다. */
+    vertical-align: top;
+}
+
+/* 작성 버튼 */
+.btn {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    margin: 10px 10px 20px 10px;
+    padding: 10px
+}
+
+.btn a{
+    background-color: #f095b7;
+    padding: 10px;
+    color: #fff;
+    border-radius: 10px;
+}

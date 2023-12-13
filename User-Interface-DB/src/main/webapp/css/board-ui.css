@@ -1,0 +1,204 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: block;
+    background-color:#fafdf7;
+    /*font-family: 'Roboto', sans-serif;*/
+    font-family: 'Dongle', sans-serif;
+    font-size: 20px;
+}
+
+
+table {
+    border-collapse: collapse;
+    resize: none;
+}
+
+caption {
+    display: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.card {
+    width: 1200px;
+    height: 650px;
+    margin: 100px auto;
+
+    box-shadow: 3px 3px 50px #e6e6e6;
+
+    border-radius: 20px;
+    position: relative; /* 상대적인 값 */
+    resize: none;
+}
+
+.board_list_wrap {
+    padding: 50px;
+}
+
+.board_list {
+    /*width: 100%;*/
+    width:1100px;
+    border-top: 2px solid #f095b7;
+    table-layout: fixed;
+}
+
+.board_list tr {
+    border-bottom: 1px solid #ccc;
+}
+
+.board_list th,
+
+.board_list td {
+    padding: 10px;
+    font-size: 22px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+.board_list td {
+    text-align: center;
+}
+
+.board_list .tit {
+    text-align: center;
+}
+
+.board_list .tit:hover {
+    text-decoration: underline;
+}
+
+.board_list_wrap .paging {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 0;
+}
+.board_list_wrap .paging a {
+    display: inline-block;
+    margin-left: 10px;
+    padding: 5px 10px;
+    border-radius: 100px;
+    font-size: 12px;
+}
+.board_list_wrap .paging a:first-child {
+    margin-left: 0;
+}
+/*
+.board_list_wrap .paging a.bt1 {
+    background-image:url('./images/left_arrow_icon');
+    background-size:30px 30px;
+   
+    border: 1px solid #eee;
+    background: #eee;
+}
+ */
+/*
+.board_list_wrap .paging a.bt2 {
+    background-image:url('./images/right_arrow_icon');
+    background-size:30px 30px;
+    border: 1px solid #eee;
+    background: #eee;
+}
+*/
+/*
+.board_list_wrap .paging a.bt3 {
+    border: 1px solid pink;
+    background: pink;
+    position: relative;
+    left:450px;
+    bottom: 00px;
+    margin: 10px 10px 20px 10px;
+    padding: 10px;
+    resize: none;
+}
+*/
+
+
+/*
+.btn {
+    margin: 10px 10px 20px 10px; 
+    padding: 10px; 
+    resize: none;
+    font-size: 20px;
+    text-align: right;  
+}
+
+.btn a{
+    border: 0px;
+    border-radius: 5px;
+    color: white;
+    background-color: #f095b7;
+    padding: 10px;
+    color: #fff;
+    font-weight: bold;
+    width: 100px;
+    height: 50px;
+    border-radius: 10px;
+    
+}
+*/
+
+.button {
+    text-align: right; 
+    margin-bottom: 30px;
+}
+
+.button-pink {
+    border: 0px;
+    border-radius: 5px;
+    background-color: #f095b7;
+    color: white;
+    font: 15px;
+    font-weight: bold;
+    width: 75px;
+    height: 40px;
+}
+
+.board_list_wrap .paging a.num {
+    border: 1px solid #f095b7;
+    font-weight: 600;
+    color: #f095b7;
+}
+
+.board_list_wrap .paging a.num.on {
+    background: #f095b7;
+    color: #fff;
+}
+
+.number {
+    padding: 10px;
+    text-align: center;
+}
+
+.number li {
+    display: inline-block;
+    
+}
+
+.number li a {
+    display: block; 
+    width: 40px;
+    /* text-align이 위로 올라간다 */
+    line-height: 40px;
+    border-radius: 10px;
+    margin: 3px;
+    margin-top: 20px;
+    box-shadow: 0 5px 10px #f1f1f1;
+    text-align: center;
+}
+
+.number li a.active {
+    background-color: rgb(252, 212, 205);
+}
+
+
+
+    
+
