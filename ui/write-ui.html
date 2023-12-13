@@ -1,0 +1,38 @@
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./write-ui.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&display=swap" rel="stylesheet">
+
+    <script src="./includeHTML.js"></script>
+    <title>글쓰기</title>
+</head>
+<body>
+    
+    <header include-html="./header.html"> </header>
+    
+    <div class="card">
+        <div class="card-header1">
+            <h1><a href="#">게시글</a></h1>
+        </div>
+
+        <div class="card-write">
+            <div class="title">
+                제목<input type="text" placeholder="제목을 입력하세요.">
+            </div>
+            <div class="msg">
+                내용<textarea placeholder="내용을 입력하세요."></textarea>
+            </div>
+        </div>
+        <div class="btn"><a href="#">작성</a></div>
+    </div>
+</body>
+<script>
+    includeHTML();
+</script>
+</html>

@@ -27,6 +27,8 @@
 
 
         <div class="header_nav"><a href="/goJoin">회원가입</a></div>
+        <div class="header_nav" onclick="isLogin2(this)"><a href="/goBoardList">토론장</a></div>
+        <div class="header_nav"><a href="#">관리자 전용</a></div>
     </div>
 
 </body>
@@ -46,6 +48,25 @@
             //챗봇과 상담 a href 비활성화
             aTag.removeAttr("href");
             alert("로그인을 한 이후에 채팅 서비스를 이용할 수 있습니다.");
+        }
+    }
+
+
+    //객체 this를 함수 파라미터에 넘겨서 가져올때는 내용자체는 this지만 파라미터변수명에 this라고 쓰면 충돌나서 안된다
+    function isLogin2(e){
+        let aTag=$(e).find('a');
+        let loginId='${sessionScope.loginId}';
+        console.log("loginId:"+loginId);
+        //로그인이 되어있다면
+        if(loginId != ''){
+            //토론장 a href 활성화
+            aTag.attr('href','/goBoardList');
+        }
+        //로그인이 안되어있다면
+        else{
+            //토론장 a href 비활성화
+            aTag.removeAttr("href");
+            alert("로그인을 한 이후에 토론장 서비스를 이용할 수 있습니다.");
         }
     }
 </script>

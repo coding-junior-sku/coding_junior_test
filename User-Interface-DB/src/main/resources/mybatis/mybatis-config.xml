@@ -11,7 +11,9 @@
 	<typeAliases>
 		<typeAlias type="com.example.userinterfacedb.model.MemberDTO" alias="memberDTO"/>
 		<typeAlias type="com.example.userinterfacedb.model.ChatDTO" alias="chatDTO"/>
-		<typeAlias type="com.example.userinterfacedb.model.NewsDTO" alias="NewsDTO"/>
+		<typeAlias type="com.example.userinterfacedb.model.NewsDTO" alias="newsDTO"/>
+		<typeAlias type="com.example.userinterfacedb.model.BoardDTO" alias="boardDTO"/>
+		<typeAlias type="com.example.userinterfacedb.model.Criteria" alias="criteria"/>
 	</typeAliases>
 
 </configuration>

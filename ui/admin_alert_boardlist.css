@@ -1,0 +1,409 @@
+*{
+    box-sizing:border-box;
+    margin:0;
+    padding:0;
+    /* font-family: "Noto Sans KR",sans-serif; */
+}
+body{
+    -ms-overflow-style:none; 
+    font-family: 'Gowun Dodum', sans-serif;
+    overflow: scroll;
+}
+body::-webkit-scrollbar { display:none;  width: 0 !important;}
+
+a{
+    text-decoration:none;
+    color:white;
+}
+*/
+/*hover 색깔이 적용되게 하려면 꼭밑에 쓰기-우선순위덮어씀*/
+a:hover{
+    color:skyblue;
+}
+/*
+#header{
+    width:1090px;
+    height:55px;
+    margin:0 auto;
+    background-color:#ffdb49;
+    
+  
+    
+    display:flex;
+    
+    justify-content: center;
+    align-items:center;
+
+    position:fixed;
+    top:0;
+    left:250px;
+
+    
+    
+}
+*/
+/*로고박스가 없으면 브라우저 기준으로 지멋대로 자리잡음*/
+#logobox{
+    width:1474px;
+    margin:0 auto;
+    height:150px;
+    margin-top:50px;
+}
+#logo{
+    
+    display:inline-block;
+    width:230px;
+    height:150px;
+    /* background-size:230px 150px; */
+    background-size:contain;
+    background-image: url("images/cloud_logo.png");
+    background-repeat:no-repeat;
+    /*background-color:#ffdb49;*/
+    position:fixed;
+    /*top:0을 하면 안된다. 그러면 브라우저 기준으로 됨*/
+    /*left:31px;*/
+    
+}
+#logo a{
+    display:inline-block;
+    width:100%;
+    height:100%;
+}
+
+
+#main_body{
+    width:1474px;
+    height:1300px;
+
+    margin: 0 auto;
+
+
+    display:flex;
+
+    /*fixed고정요소 자리만큼 이동*/
+    /*margin-top:100px;*/
+    /*
+    overflow-y:scroll;
+    overflow:hidden;
+    */
+    overflow:scroll;
+}
+
+/*스크롤바 감추고 싶으면=>해당요소에 overflow:scroll을 주고 ::webkit-scrollbar display none을 준다*/
+#main_body::-webkit-scrollbar { display:none; }
+
+#subnavigation{
+    display:inline-block;
+    width:230px;
+    background-color:#293a50;
+    height:1000px;
+
+    color:white;
+
+    position:fixed;
+    overflow:scroll;
+
+    -ms-overflow-style:none;
+}
+/*스크롤바안보이게 브라우저에서 숨기기*/
+#subnavigation::-webkit-scrollbar { display:none; }
+ul,li{
+    display:inline-block;
+    list-style:none;
+}
+#subnavigation>ul{
+    width:100%;
+    
+}
+#subnavigation>ul>li{
+    width:100%;
+    text-align:left;
+}
+
+.menu>a{
+    cursor:pointer;
+    display:inline-block;
+    width:100%;
+    line-height:52px;
+    height:52px;
+    
+    display:flex;
+    
+    
+}
+.menu>a:hover{
+    background-color:#3a495e;
+}
+
+.menu>a>span:first-child{
+    display:inline-block;
+    width:150px;
+    height: 52px;
+    margin-left:10px;
+    /*float를 주어야지만 인라인블록선언했어도 한줄안에 들어오는 기이한 현상*/
+    /*float:left;*/
+}
+.menu>a>span:nth-child(2){
+    display:inline-block;
+    width:20px;
+    height:20px;
+    margin-left:20px;
+    /*span영역자체를 가운데쯤에 놓아 배경이미지가 가운데 놓인것처럼*/
+    margin-top:15px;
+}
+/*
+.menu>a::after{
+    display:inline-block;
+    width:0;
+    height:0;
+    clear:both;
+}
+*/
+.rightarrow{
+    
+    background-image:url("images/blackRightArrowIcon.png");
+    background-repeat:no-repeat;
+    background-size:contain;
+}
+.downarrow{
+    
+    
+    background-image:url("images/blackDownArrowIcon.png");
+    background-repeat:no-repeat;
+    background-size:contain;
+}
+.menu .hide{
+    display:none;
+    width:100%;
+    /*
+    margin-top:-70px;
+    */
+}
+
+.hide>li{
+    /*기본적으로 세팅을 해놨기때문에 아무리 눌러도 js바뀐게 적용이 안되었던 것이다*/
+    /*background-color:#2d3e53;*/
+    display:inline-block;
+    width:100%;
+    height:46px;
+}
+.hide li a{
+    display:inline-block;
+    margin-left:50px;
+    line-height:46px;
+}
+.clickcolor{
+    background-color:#5468e2;
+}
+.normalcolor{
+    background-color:#2d3e53;
+}
+#subnavigation_result{
+    width:1244px;
+    display:inline-block;
+    height:100%;
+
+    /*fixed고정요소 자리만큼 이동*/
+    margin-left:230px;
+
+    overflow:scroll;
+
+    -ms-overflow-style:none;
+    
+}
+ /*스크롤바안보이게 브라우저에서 숨기기*/
+#subnavigation_result::-webkit-scrollbar { display:none; width: 0 !important;}
+#subnavigation_result_header{
+    width:100%;
+    height:262px;
+
+    padding: 0 0 30px 65px;
+    margin: 0 0 10px 0;
+
+    background-image: url("https://sportal.skuniv.ac.kr/img/sub-header-wave.38797bec.svg"),linear-gradient(90deg,#5165e1 0,#368ad9 35%,#4bbedb);
+    background-repeat: no-repeat;
+    background-position: 0 100%;
+    background-size: cover;
+
+    box-shadow: 0 5px 10px 0 rgb(0 0 0 / 16%);
+
+    
+}
+#subnavigation_result_title{
+    padding-top: 75px;
+    padding-bottom: 20px;
+    color: #fff;
+}
+#subnavigation_result_title>h2{
+    display:inline-block;
+    font-size: 38px;
+    letter-spacing: -2px;
+    font-weight: 400;
+}
+#subnavigation_result_title>span{
+    margin-left: 20px;
+    word-break: keep-all;
+    word-wrap: break-word;
+    font-size: 15px;
+    letter-spacing: -1px;
+}
+
+
+#subnavigation_result_body{
+    width:1244px;
+    height:1100px;
+    margin:12px 0px 80px;
+    padding: 35px 65px;
+
+    background-color:white;
+}
+/*스크롤바안보이게 브라우저에서 숨기기*/
+#subnavigation_result_body{-ms-overflow-style:none; }
+#subnavigation_result_body ::-webkit-scrollbar { display:none; }
+
+
+
+
+
+#table_section{
+    width:875px;
+    height:1000px;
+
+    padding:12px;
+
+    margin: 0 auto;
+}
+
+#boardlist{
+    display: table;
+    /*separate : 표(table)의 테두리와 셀(td)의 테두리 사이에 간격을 둡니다.*/
+    border-collapse: collapse;
+    /*들여쓰기 초기화*/
+    text-indent: initial;
+    /*border-spacing으로 표(table)의 테두리와 셀(td)의 테두리 사이의 간격을 정합니다. 기본값:2px*/
+    border-spacing: 2px;
+    border-color: gray;
+    border-top:1px solid;
+}
+
+#boardlist thead{
+    width:100%;
+    height:100px;
+    border-bottom:2px solid #eff7fd;
+}
+
+#boardlist tr{
+    width:100%;
+    height:100%;
+}
+#boardlist th{
+    
+    height:100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+   
+    color: #2c405a!important;
+
+    text-align:center;
+}
+
+#boardlist tbody tr{
+    width:100%;
+    height:100px;
+    border-bottom: 1px solid #c5d9e8;
+}
+
+
+#boardlist tbody td{
+    
+    height:100%;
+    padding-top: 15px;
+    padding-bottom: 15px;
+
+   
+    color: #383838 !important;
+
+    text-align:center;
+}
+
+#boardlist th:nth-child(1){
+    width:50px;
+}
+
+#boardlist tbody td:nth-child(1){
+    width:50px;
+}
+
+#boardlist th:nth-child(2){
+    width:100px;
+}
+
+#boardlist tbody td:nth-child(2){
+    width:100px;
+}
+
+#boardlist th:nth-child(3){
+    width:400px;
+}
+
+#boardlist tbody td:nth-child(3){
+    width:400px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+#boardlist th:nth-child(4){
+    width:50px;
+}
+
+#boardlist tbody td:nth-child(4){
+    width:50px;
+}
+#boardlist th:nth-child(5){
+    width:200px;
+}
+
+#boardlist tbody td:nth-child(5){
+    width:200px;
+}
+
+
+#page_action{
+    width:875px;
+    height:58px;
+    padding:0 8px;
+
+    margin: 0 auto;
+
+    color:#000000de;
+}
+
+#page_arrow{
+    height:100%;
+    width:600px;
+    margin: 0 auto;
+
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+}
+#page_arrow>span{
+    display:inline-block;
+    width:36px;
+    height:36px;
+   
+   line-height:36px;
+   text-align:center; 
+}
+#page_arrow>span:nth-child(1){
+    background-image:url("images/blackLeftArrowIcon.png");
+    background-size:contain;
+    background-repeat:no-repeat;
+}
+#page_arrow>span:nth-child(12){
+    background-image:url("images/blackRightArrowIcon.png");
+    background-size:contain;
+    background-repeat:no-repeat;
+   
+}
