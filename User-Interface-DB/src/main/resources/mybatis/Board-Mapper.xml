@@ -7,14 +7,19 @@
     </insert>
 
     <!--limit 첫번째 파라미터가 0으로 시작 두번째 파라미터는 몇개-->
-    <!--limit 다음에 오는 구문이 연산이 안된다 인터넷에서도 답변이 그렇다-->
-    <!--offset을 안쓰고 limit startIndex endIndex하면 에러가 난다 이유는 limit  두 숫자 사이에 , 필요-->
-    <!--limit #{endIndex} offset #{startIndex}-->
-    <!-- limit #{startIndex} ,#{endIndex}-->
+    <!--limit 다음에 오는 구문이 연산이 안된다 인터넷에서도 답변이 그렇다
+    select seq, manufacturer, product from device order by seq asc limit (10 * 20)+1
+    mysql limit 문장이 limit n 또는 limit n, m 이렇게 밖에 안될겁니다.
+    mybatis에서 자바호출하는 함수를 따로 만들어 어케 하면 되겠지만 자바딴에서 그냥 계산헤서 넘기시는게 쉬울겁니다.
+    oracle이라면 rownum 연산자, 비교 모두 되어 이미 가능 했겠지만요.
+    -->
+    <!--offset을 안쓰고 limit startIndex amount하면 에러가 난다 이유는 limit  두 숫자 사이에 , 필요-->
+    <!--limit #{amount} offset #{startIndex}-->
+    <!-- limit #{startIndex} ,#{amount}-->
     <select id="selectBoardByPage" parameterType="criteria" resultType="boardDTO">
         select * from boards
         order by  write_time  desc
-        limit #{startIndex} ,#{endIndex}
+        limit #{startIndex} ,#{amount}
     </select>
 
     <select id="boardTotalCount" resultType="int">

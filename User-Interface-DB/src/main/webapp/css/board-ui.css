@@ -68,7 +68,7 @@ a {
 }
 
 .board_list .tit {
-    text-align: center;
+    text-align: left;
 }
 
 .board_list .tit:hover {
@@ -94,7 +94,7 @@ a {
 .board_list_wrap .paging a.bt1 {
     background-image:url('./images/left_arrow_icon');
     background-size:30px 30px;
-   
+
     border: 1px solid #eee;
     background: #eee;
 }
@@ -123,11 +123,11 @@ a {
 
 /*
 .btn {
-    margin: 10px 10px 20px 10px; 
-    padding: 10px; 
+    margin: 10px 10px 20px 10px;
+    padding: 10px;
     resize: none;
     font-size: 20px;
-    text-align: right;  
+    text-align: right;
 }
 
 .btn a{
@@ -141,12 +141,12 @@ a {
     width: 100px;
     height: 50px;
     border-radius: 10px;
-    
+
 }
 */
 
 .button {
-    text-align: right; 
+    text-align: right;
     margin-bottom: 30px;
 }
 
@@ -179,26 +179,28 @@ a {
 
 .number li {
     display: inline-block;
-    
+
 }
 
-.number li a {
-    display: block; 
+.number li button {
+    display: block;
     width: 40px;
-    /* text-align이 위로 올라간다 */
     line-height: 40px;
     border-radius: 10px;
     margin: 3px;
     margin-top: 20px;
     box-shadow: 0 5px 10px #f1f1f1;
     text-align: center;
+    background: none;
+    border: none;
+    cursor: pointer;
 }
 
-.number li a.active {
+.number li button.active {
     background-color: rgb(252, 212, 205);
 }
 
 
 
-    
+
 
