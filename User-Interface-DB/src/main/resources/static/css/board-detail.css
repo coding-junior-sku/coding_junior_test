@@ -72,7 +72,7 @@ body{
 
     border: 1px solid #dddddd;
     border-radius: 3px;
-    padding: 20px 140px 20px 20px;
+    padding: 20px 40px 20px 20px;
 }
 
 #header>h3{
@@ -89,6 +89,8 @@ body{
     font-size: 18px;
     font-weight: bold;
     color: #222222;
+
+    margin-left:500px;
 }
 
 #header>span{
