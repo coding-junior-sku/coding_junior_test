@@ -41,4 +41,8 @@ public class BoardService {
         return sqlSession.selectOne(NAMESPACE+".selectBoardById",id);
     }
 
+    public void boardUpdate(BoardDTO boardDTO){
+         sqlSession.update(NAMESPACE+".boardUpdate",boardDTO);
+    }
+
 }
