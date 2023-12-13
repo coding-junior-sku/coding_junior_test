@@ -74,12 +74,44 @@ public class BoardController {
         if(httpSession.getAttribute("loginId")==null){
             return "redirect:/goLogin";
         }
-        //이거는 primary key int이므로 진짜 로그인 아이디를 찾아야한다
+
         int memberId= (int)httpSession.getAttribute("loginId");
         boardDTO.setWriter(memberId);
 
         boardService.insertBoard(boardDTO);
 
         return "redirect:/goBoardList";
+    }
+
+    @GetMapping("/goBoardUpdate")
+    public String goBoardUpdate(int id, Criteria criteria ,HttpSession httpSession ,Model model){
+        if(httpSession.getAttribute("loginId")==null){
+            return "redirect:/goLogin";
+        }
+
+        BoardDTO boardDTO= boardService.selectBoardById(id);
+
+        model.addAttribute("board",boardDTO);
+        model.addAttribute("criteria",criteria);
+        return "board-update-ui";
+    }
+
+    @PostMapping("/boardUpdateOk")
+    public String boardUpdateOk(BoardDTO boardDTO, Criteria criteria, HttpSession httpSession ){
+        if(httpSession.getAttribute("loginId")==null){
+            return "redirect:/goLogin";
+        }
+// 어짜피 해당 원작자만 수정하기를 눌러서 수정하고, 글쓴이를 바꿀 필요 없으니 굳이 안넣어줘도 된다
+//        int memberId= (int)httpSession.getAttribute("loginId");
+//        boardDTO.setWriter(memberId);
+
+       System.out.println("updateboardDTO"+boardDTO);
+
+        boardService.boardUpdate(boardDTO);
+
+        int page=criteria.getPage();
+        int amount=criteria.getAmount();
+        int id=boardDTO.getId();
+        return "redirect:/goBoardDetail?id="+id+"&page="+page+"&amount="+amount;
     }
 }

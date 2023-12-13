@@ -73,33 +73,77 @@ body{
     border: 1px solid #dddddd;
     border-radius: 3px;
     padding: 20px 40px 20px 20px;
+
+    /*자식요소들의 높이를 맞추기 위해 강제로*/
+    display:flex;
+    justify-content: center;
+    align-items:center;
+
+    /*line-height를 제대로 명시 안해줬더니 자식들이 난리난다.*/
+    line-height:30px;
+
 }
 
 #header>h3{
-    display:inline-block;
+    display:block;
+
+    width:400px;
+    height:100%;
+
+    text-align:center;
 
     font-size: 18px;
     font-weight: bold;
     color: #222222;
+
+
+
+    /*스크롤기능이 필요없을 때는 스크롤이 숨겨지고,
+   스크롤기능이 필요할 때는 스크롤이 보이도록*/
+    overflow-y: auto;
+
+
+    /*inline과 table cell에만 먹힌다*/
+    /*vertical-align:middle;*/
 }
 
 #header>h4{
-    display:inline-block;
+    display:block;
+
+    width:200px;
+    height:100%;
+
+    text-align:right;
 
     font-size: 18px;
     font-weight: bold;
     color: #222222;
 
-    margin-left:500px;
+
+
+    margin-left:100px;
+
+    /*inline과 table cell에만 먹힌다*/
+    /*vertical-align:middle;*/
 }
 
 #header>span{
     display: inline-block;
+
+    width:200px;
+    height:100%;
+
+    text-align:center;
+
     font-size: 12px;
     font-weight: normal;
     color: #666666;
     padding-left: 5px;
-    vertical-align: bottom;
+
+
+
+    /*inline과 table cell에만 먹힌다*/
+    /*vertical-align: bottom;*/
 }
 
 #content{
@@ -116,6 +160,7 @@ body{
     /*스크롤기능이 필요없을 때는 스크롤이 숨겨지고,
     스크롤기능이 필요할 때는 스크롤이 보이도록*/
     overflow-y: auto;
+    /*overflow-x:hidden;*/
 }
 
 #alertSection{

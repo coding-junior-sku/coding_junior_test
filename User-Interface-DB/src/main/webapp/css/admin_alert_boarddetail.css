@@ -5,7 +5,7 @@
     /* font-family: "Noto Sans KR",sans-serif; */
 }
 body{
-    -ms-overflow-style:none; 
+    -ms-overflow-style:none;
     font-family: 'Gowun Dodum', sans-serif;
     overflow: scroll;
 }
@@ -26,11 +26,11 @@ a:hover{
     height:55px;
     margin:0 auto;
     background-color:#ffdb49;
-    
-  
-    
+
+
+
     display:flex;
-    
+
     justify-content: center;
     align-items:center;
 
@@ -38,8 +38,8 @@ a:hover{
     top:0;
     left:250px;
 
-    
-    
+
+
 }
 */
 /*로고박스가 없으면 브라우저 기준으로 지멋대로 자리잡음*/
@@ -50,7 +50,7 @@ a:hover{
     margin-top:50px;
 }
 #logo{
-    
+
     display:inline-block;
     width:230px;
     height:150px;
@@ -62,7 +62,7 @@ a:hover{
     position:fixed;
     /*top:0을 하면 안된다. 그러면 브라우저 기준으로 됨*/
     /*left:31px;*/
-    
+
 }
 #logo a{
     display:inline-block;
@@ -113,7 +113,7 @@ ul,li{
 }
 #subnavigation>ul{
     width:100%;
-    
+
 }
 #subnavigation>ul>li{
     width:100%;
@@ -126,10 +126,10 @@ ul,li{
     width:100%;
     line-height:52px;
     height:52px;
-    
+
     display:flex;
-    
-    
+
+
 }
 .menu>a:hover{
     background-color:#3a495e;
@@ -160,14 +160,14 @@ ul,li{
 }
 */
 .rightarrow{
-    
+
     background-image:url("/resources/images/blackRightArrowIcon.png");
     background-repeat:no-repeat;
     background-size:contain;
 }
 .downarrow{
-    
-    
+
+
     background-image:url("/resources/images/blackDownArrowIcon.png");
     background-repeat:no-repeat;
     background-size:contain;
@@ -209,9 +209,9 @@ ul,li{
     overflow:scroll;
 
     -ms-overflow-style:none;
-    
+
 }
- /*스크롤바안보이게 브라우저에서 숨기기*/
+/*스크롤바안보이게 브라우저에서 숨기기*/
 #subnavigation_result::-webkit-scrollbar { display:none; width: 0 !important;}
 #subnavigation_result_header{
     width:100%;
@@ -227,7 +227,7 @@ ul,li{
 
     box-shadow: 0 5px 10px 0 rgb(0 0 0 / 16%);
 
-    
+
 }
 #subnavigation_result_title{
     padding-top: 75px;
@@ -289,7 +289,7 @@ ul,li{
     width:100%;
     height:100px;
     line-height:80px;
-    
+
     display:flex;
     justify-content: center;
     align-items: center;
@@ -304,22 +304,30 @@ ul,li{
     line-height:180px;
     max-height:200px;
 
-   
+
 }
 
 .detail:nth-child(3) span:nth-child(2){
     overflow-y:auto;
+    /*기본값으로 브라우저의 기본 속성을 따릅니다.
+폰트에 따라 브라우저에 따라 다르지만 보통 1.2 정도로 할당되어 있습니다.
+스크롤 줄 사이사이의 간격이 너무크다 line height가 커서*/
+    line-height:normal;
 }
 
 .detail:nth-child(4){
     height:300px;
     line-height:280px;
     max-height:300px;
-    
-}    
+
+}
 
 .detail:nth-child(4) span:nth-child(2){
     overflow-y:auto;
+    /*기본값으로 브라우저의 기본 속성을 따릅니다.
+폰트에 따라 브라우저에 따라 다르지만 보통 1.2 정도로 할당되어 있습니다.
+스크롤 줄 사이사이의 간격이 너무크다 line height가 커서*/
+    line-height:normal;
 }
 
 .detail:nth-child(6){
@@ -346,7 +354,7 @@ ul,li{
 }
 
 /*글제목과 글본문 내용부분만 스크롤 바를 보이게 허용하겠다.*/
-/* 스크롤바 전체 영역 
+/* 스크롤바 전체 영역
 커스텀 스크롤바 스타일링을 하겠다는 기본 속성 이다. 이 설정이 없으면 다른 모든 것은 비활성화 된다.
 출처: https://inpa.tistory.com/entry/CSS-🌟-스크롤-바Scrollbar-꾸미기-속성-총정리 [Inpa Dev 👨‍💻:티스토리]
 */
@@ -363,12 +371,12 @@ ul,li{
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background-color:blue !important;
+    background-color:blue !important;
 }
 
 /* 스크롤이 움직이는 뒷 배경 */
 ::-webkit-scrollbar-track {
-	background: rgb(173, 220, 239) !important; /* 스크롤바 뒷 배경 색상 */
+    background: rgb(173, 220, 239) !important; /* 스크롤바 뒷 배경 색상 */
 }
 
 
@@ -401,7 +409,7 @@ ul,li{
     font-size:16px;
 
     border-radius:3px;
-    
+
 }
 /* #page_action{
     width:875px;
@@ -426,9 +434,9 @@ ul,li{
     display:inline-block;
     width:36px;
     height:36px;
-   
+
    line-height:36px;
-   text-align:center; 
+   text-align:center;
 }
 #page_arrow>span:nth-child(1){
     background-image:url("images/blackLeftArrowIcon.png");
@@ -439,5 +447,5 @@ ul,li{
     background-image:url("images/blackRightArrowIcon.png");
     background-size:contain;
     background-repeat:no-repeat;
-   
+
 } */

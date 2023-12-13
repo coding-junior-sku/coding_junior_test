@@ -309,6 +309,10 @@ ul,li{
 
 .detail:nth-child(3) span:nth-child(2){
     overflow-y:auto;
+    /*기본값으로 브라우저의 기본 속성을 따릅니다.
+폰트에 따라 브라우저에 따라 다르지만 보통 1.2 정도로 할당되어 있습니다.
+스크롤 줄 사이사이의 간격이 너무크다 line height가 커서*/
+    line-height:normal;
 }
 
 .detail:nth-child(4){
@@ -320,6 +324,10 @@ ul,li{
 
 .detail:nth-child(4) span:nth-child(2){
     overflow-y:auto;
+    /*기본값으로 브라우저의 기본 속성을 따릅니다.
+폰트에 따라 브라우저에 따라 다르지만 보통 1.2 정도로 할당되어 있습니다.
+스크롤 줄 사이사이의 간격이 너무크다 line height가 커서*/
+    line-height:normal;
 }
 
 .detail:nth-child(6){
