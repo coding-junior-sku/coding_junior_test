@@ -37,4 +37,8 @@ public class BoardService {
         return sqlSession.selectOne(NAMESPACE+".boardTotalCount");
     }
 
+    public BoardDTO selectBoardById(int id){
+        return sqlSession.selectOne(NAMESPACE+".selectBoardById",id);
+    }
+
 }

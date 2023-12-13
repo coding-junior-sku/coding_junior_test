@@ -53,7 +53,7 @@
                     <tr>
                         <td>${board.id}</td>
                         <td class="tit">
-                            <a href="#">${board.title}</a>
+                            <a href="/goBoardDetail?id=${board.id}&page=${pagination.criteria.page}&amount=${pagination.criteria.amount}">${board.title}</a>
                         </td>
                         <td>${board.content}</td>
                         <td>${board.writeTime}</td>
@@ -131,7 +131,7 @@
         </div>
     </div>
 
-    <form action="/goBoardList" name="pageForm">
+    <form action="/goBoardList" name="pageForm" method="get">
         <input type="hidden" name="page">
         <!--원래 criteria amount값이 들어가도록-->
         <input type="hidden" name="amount" value="${pagination.criteria.amount}">

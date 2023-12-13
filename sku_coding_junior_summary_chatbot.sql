@@ -69,6 +69,8 @@ desc chats;
 desc boards;
 desc comments;
 
+#truncate boards;
+
 /*실험 구간임->따라할 필요 없음*/
 select * from members;
 insert into members (name,login_id,password) values('남기정','kjn','1234');
@@ -78,3 +80,4 @@ insert into chats(chat_room_id,writer_is_human,write_content) values(7,0,'챗봇
 insert into chats(chat_room_id,writer_is_human,write_content) values(7,0,'챗봇 test2');
 
 select * from boards;
+select * from comments;

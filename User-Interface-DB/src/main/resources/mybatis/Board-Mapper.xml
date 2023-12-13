@@ -26,5 +26,12 @@
         select count(id) from boards
     </select>
 
+    <select id="selectBoardById"  parameterType="int" resultType="boardDTO">
+        select b.id, b.writer ,m.login_id as writerLoginId ,b.title, b.content, b.alert_number , b.alert_handle , b.write_time
+        from boards  b
+                 inner join members m
+                 on b.writer = m.id
+        where b.id=#{id}
+    </select>
 
 </mapper>
