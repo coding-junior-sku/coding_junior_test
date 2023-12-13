@@ -39,7 +39,10 @@ public class BoardController {
         return "board-ui";
     }
     @GetMapping("/goBoardWrite")
-    public String boardWrite (){
+    public String boardWrite (HttpSession httpSession){
+        if(httpSession.getAttribute("loginId")==null){
+            return "redirect:/goLogin";
+        }
         return "write-ui";
     }
 
