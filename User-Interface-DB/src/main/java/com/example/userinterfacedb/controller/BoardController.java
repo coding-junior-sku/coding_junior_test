@@ -120,4 +120,16 @@ public class BoardController {
         int id=boardDTO.getId();
         return "redirect:/goBoardDetail?id="+id+"&page="+page+"&amount="+amount;
     }
+
+    //게시글 삭제
+    @GetMapping("/boardDelete")
+    public String boardDelete (@RequestParam(value="id")int id, Criteria criteria, HttpSession httpSession){
+        if(httpSession.getAttribute("loginId")==null){
+            return "redirect:/goLogin";
+        }
+
+        boardService.boardDelete(id);
+
+        return "redirect:/goBoardList?page="+criteria.getPage()+"&amount="+criteria.getAmount();
+    }
 }
