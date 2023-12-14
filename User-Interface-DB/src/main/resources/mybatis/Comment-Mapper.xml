@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.userinterfacedb.CommentMapper">
+    <insert id="commentInsert" parameterType="commentDTO">
+        insert into comments(writer,content, board_id)
+        values(#{writer},#{content} ,#{boardId})
+    </insert>
+
+    <!--limit 첫번째 파라미터가 0으로 시작 두번째 파라미터는 몇개-->
+    <!--limit 다음에 오는 구문이 연산이 안된다 인터넷에서도 답변이 그렇다
+    select seq, manufacturer, product from device order by seq asc limit (10 * 20)+1
+    mysql limit 문장이 limit n 또는 limit n, m 이렇게 밖에 안될겁니다.
+    mybatis에서 자바호출하는 함수를 따로 만들어 어케 하면 되겠지만 자바딴에서 그냥 계산헤서 넘기시는게 쉬울겁니다.
+    oracle이라면 rownum 연산자, 비교 모두 되어 이미 가능 했겠지만요.
+    -->
+    <!--offset을 안쓰고 limit startIndex amount하면 에러가 난다 이유는 limit  두 숫자 사이에 , 필요-->
+    <!--limit #{amount} offset #{startIndex}-->
+    <!-- limit #{startIndex} ,#{amount}-->
+    <!--parameter를 객체 속성이 아니라 따로따로 여러개로 쓸때 map으로 받는다-->
+    <select id="selectCommentByPage" parameterType="java.util.HashMap" resultType="commentDTO">
+        select c.id , c.writer , m.login_id as writerLoginId , c.content, c.alert_number, c.alert_handle , c.write_time , c.board_id
+        from comments c
+                 inner join members m
+                 on c.writer=m.id
+        where c.board_id=#{boardId}
+        order by  c.write_time  desc
+        limit #{criteria.startIndex} ,#{criteria.amount}
+    </select>
+
+    <select id="commentTotalCount" parameterType="int" resultType="int">
+        select count(id) from comments
+        where board_id=#{boardId}
+    </select>
+
+<!--    <select id="selectCommentById"  parameterType="int" resultType="boardDTO">-->
+<!--        select b.id, b.writer ,m.login_id as writerLoginId ,b.title, b.content, b.alert_number , b.alert_handle , b.write_time-->
+<!--        from boards  b-->
+<!--                 inner join members m-->
+<!--                 on b.writer = m.id-->
+<!--        where b.id=#{id}-->
+<!--    </select>-->
+
+<!--    <update id="commentUpdate" parameterType="boardDTO">-->
+<!--        update boards-->
+<!--        set title=#{title} , content=#{content}-->
+<!--        where id=#{id}-->
+<!--    </update>-->
+
+<!--    <delete id="commentDelete" parameterType="int">-->
+<!--        delete from boards-->
+<!--        where id=#{id}-->
+<!--    </delete>-->
+
+</mapper>

@@ -47,7 +47,8 @@
         let title=$('input[name=title]').val();
         let content=$('textarea[name=content]').val();
         if(title!=='' && content!==''){
-            //title과 content 줄 바꿈 부분을 <br>로 변형해서 나중에 화면에 출력할때 한줄로 나와서 css가 깨지는게 아니라 여러줄로 나오게 한다
+            //title과 content 줄 바꿈 부분을 <br>로 변형해서 저장한다.
+            // 나중에 화면에 출력할때 한줄로 나와서 css가 깨지는게 아니라 여러줄로 나오게 한다
             //x 스크롤이 안생기기 바래도 자꾸 생기니까 줄바꿈 유지
             content=content.replace(/\n/g, "<br>")
             content=content.replace(/\r\n/g, "<br>")

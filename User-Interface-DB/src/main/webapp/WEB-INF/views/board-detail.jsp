@@ -159,6 +159,7 @@
 
 </body>
 
+<script src="/resources/js/commentAjax.js"></script>
 <script>
 function goBoardList(){
 
@@ -190,6 +191,54 @@ function boardDelete(){
 
     location.href="/boardDelete?id="+id+"&page="+page+"&amount="+amount;
 }
+
+
+
+
+globalThis.page = 1;
+
+function getCommentList(){
+    commentAjax.getList({
+        boardId:${board.id},
+        page:globalThis.page
+    },showCommentList);
+}
+
+function showCommentList(result){
+
+}
+
+//답글 쓰기 버튼
+$('#writeComment > button').on('click',function(){
+    console.log('답글쓰기버튼 눌림');
+    let commentContent= $('#writeComment textarea').val();
+    //빈 문자열이면 넘겨주지 않는다
+    if(commentContent==''){
+        alert('내용을 써주셔야 댓글 등록이 됩니다.');
+    }
+    else{
+        //title과 content 줄 바꿈 부분을 <br>로 변형해서 저장한다.
+        // 나중에 화면에 출력할때 한줄로 나와서 css가 깨지는게 아니라 여러줄로 나오게 한다
+        //x 스크롤이 안생기기 바래도 자꾸 생기니까 줄바꿈 유지
+        commentContent=commentContent.replace(/\n/g, "<br>");
+        let content=commentContent.replace(/\r\n/g, "<br>");
+        let boardId=${board.id};
+        let writer=${sessionScope.loginId};
+        commentAjax.add({
+            content:content,
+            boardId:boardId,
+            writer:writer
+        },function(result){
+            console.log(result);
+            //textarea 초기화하고 업데이트 반영해서 댓글 리스트 다시 불러와서 보여주기
+            console.log()
+            $('#writeComment textarea').val('');
+            //getCommentList();
+        });
+    }
+
+
+});
 
 
 </script>
