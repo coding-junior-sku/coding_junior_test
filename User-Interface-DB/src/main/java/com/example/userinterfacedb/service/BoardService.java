@@ -45,4 +45,8 @@ public class BoardService {
          sqlSession.update(NAMESPACE+".boardUpdate",boardDTO);
     }
 
+    public void boardDelete(int id){
+        sqlSession.delete(NAMESPACE+".boardDelete",id);
+    }
+
 }

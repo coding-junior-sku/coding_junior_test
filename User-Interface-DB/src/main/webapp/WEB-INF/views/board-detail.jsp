@@ -49,7 +49,7 @@
 
                     <c:when test="${sessionScope.loginId eq board.writer}">
                         <button onclick="goBoardUpdate()">수정</button>
-                        <button>삭제</button>
+                        <button onclick="boardDelete()">삭제</button>
                     </c:when>
                     <c:otherwise>
 
@@ -183,6 +183,13 @@ function goBoardUpdate(){
     location.href="/goBoardUpdate?id="+id+"&page="+page+"&amount="+amount;
 }
 
+function boardDelete(){
+    let page=${criteria.page};
+    let amount=${criteria.amount};
+    let id = ${board.id};
+
+    location.href="/boardDelete?id="+id+"&page="+page+"&amount="+amount;
+}
 
 
 </script>
