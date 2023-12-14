@@ -56,6 +56,7 @@ public class BoardController {
         }
         System.out.println("criteria:"+criteria);
        BoardDTO boardDTO= boardService.selectBoardById(id);
+
        model.addAttribute("board",boardDTO);
        model.addAttribute("criteria",criteria);
        return "board-detail";
@@ -90,6 +91,11 @@ public class BoardController {
         }
 
         BoardDTO boardDTO= boardService.selectBoardById(id);
+
+        //수정페이지로 갈때는 화면에서 줄바꿈으로 위해 db에 저장한 <br>을 자바에서 엔터로 인식하는 값으로 바꾼다
+        //그러면 나중에 수정한 값을 db에 저장할때 어짜피 <br>로 처리하는 코드가 있으니까
+        boardDTO.setTitle(boardDTO.getTitle().replaceAll("<br>", "\r\n"));
+        boardDTO.setContent(boardDTO.getContent().replaceAll("<br>", "\r\n"));
 
         model.addAttribute("board",boardDTO);
         model.addAttribute("criteria",criteria);

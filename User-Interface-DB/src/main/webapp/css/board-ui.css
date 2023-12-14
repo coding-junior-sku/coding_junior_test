@@ -28,7 +28,7 @@ a {
 
 .card {
     width: 1200px;
-    height: 650px;
+    /*height: 650px;*/
     margin: 100px auto;
 
     box-shadow: 3px 3px 50px #e6e6e6;
@@ -40,27 +40,45 @@ a {
 
 .board_list_wrap {
     padding: 50px;
+
 }
 
 .board_list {
     /*width: 100%;*/
     width:1100px;
     border-top: 2px solid #f095b7;
+    /*
+    스타일에서 지정한 너비를 무시한 채 셀의 내용에 따라 너비가 달라지는 것 방지
+출처: https://devjhs.tistory.com/642 [키보드와 하루:티스토리]*/
     table-layout: fixed;
 }
 
 .board_list tr {
     border-bottom: 1px solid #ccc;
+    /*기본적으로 table은 height를 고정해도 content에 따라 변하기 때문에
+    굳이 고정하려면 div를 넣어서 div 높이를 고정시키고 그안에 content를 넣는다*/
+    height:50px !important;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
 }
 
 .board_list th,
 
 .board_list td {
+    height:50px !important;
+    line-height:22px;
     padding: 10px;
     font-size: 22px;
+
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+
+    /*영문에도 적용하게*/
+    word-break: break-all;
+    height: auto;
+    /*출처: https://devjhs.tistory.com/642 [키보드와 하루:티스토리]*/
 }
 
 .board_list td {

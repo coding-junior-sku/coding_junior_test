@@ -72,22 +72,22 @@ body{
 
     border: 1px solid #dddddd;
     border-radius: 3px;
-    padding: 20px 40px 20px 20px;
+    padding: 20px 10px 20px 10px;
 
     /*자식요소들의 높이를 맞추기 위해 강제로*/
     display:flex;
     justify-content: center;
     align-items:center;
 
-    /*line-height를 제대로 명시 안해줬더니 자식들이 난리난다.*/
-    line-height:30px;
+    /*line-height를 제대로 명시 안해줬더니 자식들이 높이가 안맞아서 제각각으로 배치되어 난리난다.*/
+    line-height:28px;
 
 }
 
 #header>h3{
     display:block;
 
-    width:400px;
+    width:550px;
     height:100%;
 
     text-align:center;
@@ -121,7 +121,7 @@ body{
 
 
 
-    margin-left:100px;
+    margin-left:0;
 
     /*inline과 table cell에만 먹힌다*/
     /*vertical-align:middle;*/
