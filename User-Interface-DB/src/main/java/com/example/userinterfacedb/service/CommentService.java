@@ -29,7 +29,7 @@ public class CommentService {
         HashMap<String, Object> map = new HashMap<String, Object>();
         map.put("criteria",criteria);
         map.put("boardId",boardId);
-        return sqlSession.selectList(NAMESPACE+".selectCommentByPage");
+        return sqlSession.selectList(NAMESPACE+".selectCommentByPage",map);
     }
 
     public int commentTotalCount(int boardId){

@@ -27,7 +27,7 @@ public class CommentRestController {
         CommentPaginationDTO commentPaginationDTO= new CommentPaginationDTO();
         commentPaginationDTO.setCommentCount(commentTotalCount);
         commentPaginationDTO.setCommentDTOList(commentDTOList);
-
+        System.out.println(commentDTOList);
         return commentPaginationDTO;
     }
 

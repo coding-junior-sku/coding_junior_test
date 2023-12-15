@@ -66,68 +66,68 @@
         </div>
         <!--댓글 리스트가 나타날 구역-->
         <div id="CommentSection">
-            <div class="comment">
-                <div class="commentHeader"><div>닉네임</div><div>날짜</div></div>
-                <div class="commentContent">
-                    댓글 본문 글
-                </div>
-                <div class="commentAlert">
-                    <div>
-                        <span>신고하기</span>
-                        <span></span>
-                    </div>
-                   
-                </div>
-                <div class="commentButton">
-                    <button>수정</button>
-                    <button>삭제</button>
-                </div>
-            </div>
-            <div class="comment">
-                <div class="commentHeader"><div>닉네임</div><div>날짜</div></div>
-                <div class="commentContent">
-                    댓글 본문 글
-                </div>
-                <div class="commentAlert">
-                    <div>
-                        <span>신고하기</span>
-                        <span></span>
-                    </div>
-                   
-                </div>
-                <div class="commentButton">
-                    <button>수정</button>
-                    <button>삭제</button>
-                </div>
-            </div>
-            <div class="comment">
-                <div class="commentHeader"><div>닉네임</div><div>날짜</div></div>
-                <div class="commentContent">
-                    댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문1111111111111111111111111111111111111111111111111
-                    댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글
-                    댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글
-                    댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글
-                    댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글
-                    댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글
-                    댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글
-                    댓글 본문 댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문
-                    댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문
-                    댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문
-                
-                </div>
-                <div class="commentAlert">
-                    <div>
-                        <span>신고하기</span>
-                        <span></span>
-                    </div>
-                    
-                </div>
-                <div class="commentButton">
+<%--            <div class="comment">--%>
+<%--                <div class="commentHeader"><div>닉네임</div><div>날짜</div></div>--%>
+<%--                <div class="commentContent">--%>
+<%--                    댓글 본문 글--%>
+<%--                </div>--%>
+<%--                <div class="commentAlert">--%>
+<%--                    <div>--%>
+<%--                        <span>신고하기</span>--%>
+<%--                        <span></span>--%>
+<%--                    </div>--%>
 
-                    <button>수정</button>
-                    <button>삭제</button>
-                </div>
-            </div>
+<%--                </div>--%>
+<%--                <div class="commentButton">--%>
+<%--                    <button>수정</button>--%>
+<%--                    <button>삭제</button>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="comment">--%>
+<%--                <div class="commentHeader"><div>닉네임</div><div>날짜</div></div>--%>
+<%--                <div class="commentContent">--%>
+<%--                    댓글 본문 글--%>
+<%--                </div>--%>
+<%--                <div class="commentAlert">--%>
+<%--                    <div>--%>
+<%--                        <span>신고하기</span>--%>
+<%--                        <span></span>--%>
+<%--                    </div>--%>
+<%--                   --%>
+<%--                </div>--%>
+<%--                <div class="commentButton">--%>
+<%--                    <button>수정</button>--%>
+<%--                    <button>삭제</button>--%>
+<%--                </div>--%>
+<%--            </div>--%>
+<%--            <div class="comment">--%>
+<%--                <div class="commentHeader"><div>닉네임</div><div>날짜</div></div>--%>
+<%--                <div class="commentContent">--%>
+<%--                    댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문1111111111111111111111111111111111111111111111111--%>
+<%--                    댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글--%>
+<%--                    댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글--%>
+<%--                    댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글--%>
+<%--                    댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글--%>
+<%--                    댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글--%>
+<%--                    댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글댓글 본문 글--%>
+<%--                    댓글 본문 댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문--%>
+<%--                    댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문--%>
+<%--                    댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문댓글 본문--%>
+<%--                --%>
+<%--                </div>--%>
+<%--                <div class="commentAlert">--%>
+<%--                    <div>--%>
+<%--                        <span>신고하기</span>--%>
+<%--                        <span></span>--%>
+<%--                    </div>--%>
+<%--                    --%>
+<%--                </div>--%>
+<%--                <div class="commentButton">--%>
+
+<%--                    <button>수정</button>--%>
+<%--                    <button>삭제</button>--%>
+<%--                </div>--%>
+<%--            </div>--%>
 
 
         </div>
@@ -196,6 +196,8 @@ function boardDelete(){
 
 
 globalThis.page = 1;
+getCommentList();
+
 
 function getCommentList(){
     commentAjax.getList({
@@ -205,7 +207,33 @@ function getCommentList(){
 }
 
 function showCommentList(result){
+    let totalComment='';
 
+    result.commentDTOList.forEach(commentDTO=>{
+        let oneComment='';
+        oneComment+='<div class="comment">';
+            oneComment+='<div class="commentHeader"><div>'+commentDTO.writerLoginId+'</div><div>'+commentDTO.writeTime+'</div></div>';
+            oneComment+='<div class="commentContent">';
+                oneComment+=commentDTO.content;
+            oneComment+='</div>';
+            oneComment+='<div class="commentAlert">';
+                oneComment+='<div>';
+                    oneComment+='<span>신고하기</span>';
+                    oneComment+='<span></span>';
+                oneComment+='</div>';
+
+            oneComment+='</div>';
+            oneComment+='<div class="commentButton">';
+                oneComment+='<button>수정</button>';
+                oneComment+='<button>삭제</button>';
+            oneComment+='</div>';
+        oneComment+='</div>';
+
+        totalComment+=oneComment;
+    });
+
+    $('#CommentSection').html(totalComment);
+    console.log(totalComment);
 }
 
 //답글 쓰기 버튼
