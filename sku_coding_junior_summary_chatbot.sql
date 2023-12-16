@@ -48,8 +48,6 @@ create table boards(
     writer int  not null ,
     title varchar(255) not null,
     content text not null,
-    alert_number int ,
-    alert_handle tinyint ,
     write_time datetime default now()
 )character set=utf8mb4;
 
@@ -60,8 +58,6 @@ create table comments(
 	id int not null auto_increment primary key,
     writer int not null,
     content text not null,
-    alert_number int ,
-    alert_handle tinyint,
     write_time datetime default now(),
     board_id int not null
 )character set=utf8mb4;
