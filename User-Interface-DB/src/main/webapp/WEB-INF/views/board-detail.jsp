@@ -220,10 +220,13 @@ function showCommentList(result){
             //     oneComment+='</div>';
             //
             // oneComment+='</div>';
-            oneComment+='<div class="commentButton">';
+            if(${sessionScope.loginId}==commentDTO.writer){
+                oneComment+='<div class="commentButton">';
                 oneComment+='<button>수정</button>';
                 oneComment+='<button>삭제</button>';
-            oneComment+='</div>';
+                oneComment+='</div>';
+            }
+
         oneComment+='</div>';
 
         totalComment+=oneComment;
