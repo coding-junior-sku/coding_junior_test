@@ -28,7 +28,7 @@
 
         <div class="header_nav"><a href="/goJoin">회원가입</a></div>
         <div class="header_nav" onclick="isLogin2(this)"><a href="/goBoardList">토론장</a></div>
-        <div class="header_nav"><a href="#">관리자 전용</a></div>
+<%--        <div class="header_nav"><a href="#">관리자 전용</a></div>--%>
     </div>
 
 </body>
