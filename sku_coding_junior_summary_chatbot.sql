@@ -27,6 +27,8 @@ create table members(
     password varchar(50) not null
 )character set=utf8mb4;
 
+ALTER TABLE members ADD CONSTRAINT name_unique UNIQUE KEY(name);
+
 create table chats(
 	id bigint not null auto_increment primary key,
     chat_room_id int not null ,
@@ -51,6 +53,9 @@ create table boards(
     write_time datetime default now()
 )character set=utf8mb4;
 
+#이 제약조건을 추가하려면 boards,comments 테이블 자체를 drop한 후 다시 만들고 나서 생성해라 comments 먼저 지우고 boards 지워라. foreign 때문에
+alter table boards add constraint writer_foreign foreign key(writer) references members(id) on delete cascade;
+
 create table comments(
 	id int not null auto_increment primary key,
     writer int not null,
@@ -62,6 +67,7 @@ create table comments(
 )character set=utf8mb4;
 
 alter table comments add constraint board_id_foreign foreign key(board_id) references boards(id) on delete cascade;
+alter table comments add constraint comment_writer_foreign foreign key(writer) references members(id) on delete cascade;
 
 desc members;
 desc chats;
@@ -81,3 +87,10 @@ insert into chats(chat_room_id,writer_is_human,write_content) values(7,0,'챗봇
 
 select * from boards;
 select * from comments;
+delete from comments where id=4;
+delete from members where id=1;
+delete from members where id=6;
+delete from members where id=8;
+
+drop table boards;
+drop table comments;

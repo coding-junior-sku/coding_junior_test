@@ -27,6 +27,9 @@
         <h2>회원가입</h2>
         <form method="post" id="join-form" action="/joinOk" name="joinForm">
             <input type="text" name="name" placeholder="name">
+            <p><span id="decide2" style='color:#f095b7;'>이름 중복 여부를 확인해주세요.</span>
+                <input type="button" value="이름 중복확인" class="btn-gradient red mini" onclick="checkId()">
+            </p>
     <%-- <input type="number" name="userBirth" placeholder="생년월일 8자리">--%>
             <input type="text" name="loginId" placeholder="id"> <br>
             <p><span id="decide" style='color:#f095b7;'>ID 중복 여부를 확인해주세요.</span>
