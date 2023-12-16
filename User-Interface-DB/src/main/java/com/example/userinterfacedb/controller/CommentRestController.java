@@ -21,6 +21,8 @@ public class CommentRestController {
 
     @GetMapping("/getCommentList/{boardId}/{page}")
     public CommentPaginationDTO getCommentList(@PathVariable("boardId")int boardId, @PathVariable("page")int page){
+        //amount=>한 페이지에 3개씩 보이게 할 것이다
+        //page=> javascript에서 globalThis.page => 현재 선택한 페이지
         List<CommentDTO> commentDTOList =commentService.selectCommentByPage(boardId,new Criteria().create(page,3));
         int commentTotalCount=commentService.commentTotalCount(boardId);
 

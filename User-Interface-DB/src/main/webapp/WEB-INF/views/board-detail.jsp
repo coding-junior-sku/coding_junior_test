@@ -34,13 +34,13 @@
                 <div id="content">
                     ${board.content}
                 </div>
-                <div id="alertSection">
-                    <div>
-                        <span>신고하기</span>
-                        <image src="resources/images/alert_icon.png"/>
-                    </div>
-                   
-                </div>
+<%--                <div id="alertSection">--%>
+<%--                    <div>--%>
+<%--                        <span>신고하기</span>--%>
+<%--                        <image src="resources/images/alert_icon.png"/>--%>
+<%--                    </div>--%>
+<%--                   --%>
+<%--                </div>--%>
             </div>
             <!--수정,삭제,목록 넣을 곳-->
             <div id="containerButton">
@@ -134,18 +134,18 @@
 
         <!--댓글 페이징 처리 구역-->
         <div id="commentPaging">
-            <button id="commentPrevious"></button>
-            <button>11</button>
-            <button>12</button>
-            <button>13</button>
-            <button>14</button>
-            <button>15</button>
-            <button>16</button>
-            <button>17</button>
-            <button>18</button>
-            <button>19</button>
-            <button>20</button>
-            <button id="commentNext"></button>
+<%--            <button id="commentPrevious"></button>--%>
+<%--            <button>11</button>--%>
+<%--            <button>12</button>--%>
+<%--            <button>13</button>--%>
+<%--            <button>14</button>--%>
+<%--            <button>15</button>--%>
+<%--            <button>16</button>--%>
+<%--            <button>17</button>--%>
+<%--            <button>18</button>--%>
+<%--            <button>19</button>--%>
+<%--            <button>20</button>--%>
+<%--            <button id="commentNext"></button>--%>
         </div>
         
 
@@ -192,9 +192,6 @@ function boardDelete(){
     location.href="/boardDelete?id="+id+"&page="+page+"&amount="+amount;
 }
 
-
-
-
 globalThis.page = 1;
 getCommentList();
 
@@ -208,7 +205,7 @@ function getCommentList(){
 
 function showCommentList(result){
     let totalComment='';
-
+    //commentpaginationdto의 속성값으로 접근해야함
     result.commentDTOList.forEach(commentDTO=>{
         let oneComment='';
         oneComment+='<div class="comment">';
@@ -216,13 +213,13 @@ function showCommentList(result){
             oneComment+='<div class="commentContent">';
                 oneComment+=commentDTO.content;
             oneComment+='</div>';
-            oneComment+='<div class="commentAlert">';
-                oneComment+='<div>';
-                    oneComment+='<span>신고하기</span>';
-                    oneComment+='<span></span>';
-                oneComment+='</div>';
-
-            oneComment+='</div>';
+            // oneComment+='<div class="commentAlert">';
+            //     oneComment+='<div>';
+            //         oneComment+='<span>신고하기</span>';
+            //         oneComment+='<span></span>';
+            //     oneComment+='</div>';
+            //
+            // oneComment+='</div>';
             oneComment+='<div class="commentButton">';
                 oneComment+='<button>수정</button>';
                 oneComment+='<button>삭제</button>';
@@ -234,7 +231,86 @@ function showCommentList(result){
 
     $('#CommentSection').html(totalComment);
     console.log(totalComment);
+
+    //댓글 페이지네이션 함수에게 총 댓글 갯수 넘기기
+    //commentpaginationdto의 속성값으로 접근해야함
+    commentPagination(result.commentCount);
 }
+
+//댓글 페이지네이션 버튼들 만들기
+function commentPagination(commentCount){
+    //한페이지에 보이는 버튼 갯수
+    let pageCount=10;
+    // 현재 페이지를 기준으로 페이지 단위에 맞춰서 마지막 페이지 계산
+    let endPage = (Math.ceil( globalThis.page / pageCount)) * pageCount;
+    let startPage = endPage - pageCount + 1;
+
+    // 게시글 전체 개수를 통해 가장 마지막 페이지 계산
+    //한번에 3개씩 보이게 할 것이다.
+    let realEnd = (Math.ceil(commentCount / 3));
+
+    // 만약 가장 마지막 페이지보다 마지막 페이지가 더 클 경우(endPage는 배수로 증가하기 떄문)
+    if(realEnd < endPage){
+        // 게시글이 한 개도 없다면, realEnd는 0이 되고, endPage도 0이 된다.
+        // 따라서 realEnd가 0이라면 endPage를 1로 변경해주어야 한다.
+        endPage = realEnd === 0 ? 1 : realEnd;
+    }
+
+    console.log(endPage);
+    let prev = startPage > 1;
+    let next = endPage < realEnd;
+
+    let commentPaging='';
+    if(prev===true){
+        commentPaging+='<button id="commentPrevious" class="pagingButton" data-page-number="'+(startPage-1)+'"></button>';
+
+    }
+
+    for(let i=startPage;i<=endPage;i++){
+        if(globalThis.page==i){
+            commentPaging+='<button disabled>'+i+'</button>';
+        }
+        /*
+             data-속성명 으로 html 태그안에 아래와 같이 넣어준다
+             이때 중요한것은 속성명은 절대 camelCase  가 아닌 kebab-case 로 작성되어야한다.
+             event listener 로 가져오는 방법
+             예시)const data = e.target.dataset
+             JS 로 넘어올때는
+             camelCase 로 변환되어 넘어오게된다.
+             예시)const value = e.target.dataset.veryVeryLongName
+             data 의 속성의 값은 무조건 string
+             https://leestrument.tistory.com/entry/HTML-%EC%9A%94%EC%86%8C%EC%97%90-%EC%82%AC%EC%9A%A9%EC%9E%90-%EC%A0%95%EC%9D%98-%EC%86%8D%EC%84%B1-%EB%84%A3%EA%B8%B0-feat-data-%EC%86%8D%EC%84%B1
+          */
+        else{
+            commentPaging+='<button class="pagingButton" data-page-number="'+i+'">'+i+'</button>';
+        }
+
+    }
+
+    if(next===true){
+        commentPaging+='<button id="commentNext" class="pagingButton" data-page-number="'+ (endPage+1)+'"></button>';
+    }
+
+    $('#commentPaging').html(commentPaging);
+
+}
+
+//이벤트 위임->자식들이 얼마나 추가될지 모를때 자식들한테 이벤트 공통적 적용
+// 이벤트의 위임을 이용하면 현재 존재하는 자손 요소뿐만 아니라, 나중에 추가되는 자손 요소까지도 모두 자동으로 연결됩니다.
+$('#commentPaging').on('click','.pagingButton',function(event){
+    event.preventDefault();
+    /*
+           target: 이벤트를 발생시킨 요소
+           currentTarget: 현재 이벤트가 발생한 요소
+           e.currentTarget은 이 이벤트가 걸려있는 그 요소를 가져오고,
+           e.target은 내가 누른 요소! 즉 버블링의 시초를 가져온다.
+        */
+
+    let currentPageNum= event.currentTarget.dataset.pageNumber;
+    globalThis.page=currentPageNum;
+    getCommentList();
+});
+
 
 //답글 쓰기 버튼
 $('#writeComment > button').on('click',function(){
@@ -259,9 +335,8 @@ $('#writeComment > button').on('click',function(){
         },function(result){
             console.log(result);
             //textarea 초기화하고 업데이트 반영해서 댓글 리스트 다시 불러와서 보여주기
-            console.log()
             $('#writeComment textarea').val('');
-            //getCommentList();
+            getCommentList();
         });
     }
 
