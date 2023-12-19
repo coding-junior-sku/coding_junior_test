@@ -40,4 +40,7 @@ public class CommentService {
         sqlSession.insert(NAMESPACE+".commentInsert",commentDTO);
     }
 
+    public void commentUpdate(CommentDTO commentDTO){
+        sqlSession.update(NAMESPACE+".commentUpdate",commentDTO);
+    }
 }

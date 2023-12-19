@@ -33,6 +33,11 @@ public class CommentRestController {
         return commentPaginationDTO;
     }
 
+    @PostMapping("/commentUpdateOk")
+    public String commentUpdateOk(@RequestBody CommentDTO commentDTO){
+        commentService.commentUpdate(commentDTO);
+        return "{\"result\":\"success\"}";
+    }
     @PostMapping("/commentWriteOk")
     public String commentWriteOk(@RequestBody CommentDTO commentDTO){
         commentService.commentInsert(commentDTO);
