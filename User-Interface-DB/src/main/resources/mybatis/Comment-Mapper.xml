@@ -48,9 +48,9 @@
 
 
 
-<!--    <delete id="commentDelete" parameterType="int">-->
-<!--        delete from boards-->
-<!--        where id=#{id}-->
-<!--    </delete>-->
+    <delete id="commentDelete" parameterType="int">
+        delete from comments
+        where id=#{id}
+    </delete>
 
 </mapper>
