@@ -210,7 +210,7 @@ function showCommentList(result){
         let oneComment='';
         oneComment+='<div class="comment">';
             oneComment+='<div class="commentHeader"><div>'+commentDTO.writerLoginId+'</div><div>'+commentDTO.writeTime+'</div></div>';
-            oneComment+='<div class="commentContent">';
+            oneComment+='<div class="commentContent" data-comment-number="'+commentDTO.id+'">';
                 oneComment+=commentDTO.content;
             oneComment+='</div>';
             // oneComment+='<div class="commentAlert">';
@@ -222,8 +222,8 @@ function showCommentList(result){
             // oneComment+='</div>';
             if(${sessionScope.loginId}==commentDTO.writer){
                 oneComment+='<div class="commentButton">';
-                oneComment+='<button>수정</button>';
-                oneComment+='<button>삭제</button>';
+                oneComment+='<button class="commentUpdate" data-comment-number="'+commentDTO.id+'">수정</button>';
+                oneComment+='<button class="commentDelete" data-comment-number="'+commentDTO.id+'">삭제</button>';
                 oneComment+='</div>';
             }
 
@@ -298,6 +298,7 @@ function commentPagination(commentCount){
 
 }
 
+//답글 페이징 버튼
 //이벤트 위임->자식들이 얼마나 추가될지 모를때 자식들한테 이벤트 공통적 적용
 // 이벤트의 위임을 이용하면 현재 존재하는 자손 요소뿐만 아니라, 나중에 추가되는 자손 요소까지도 모두 자동으로 연결됩니다.
 $('#commentPaging').on('click','.pagingButton',function(event){
@@ -314,6 +315,85 @@ $('#commentPaging').on('click','.pagingButton',function(event){
     getCommentList();
 });
 
+//답글 수정 버튼
+let clickedCommentNum=0;
+let currentCommentNum=0;
+let alreadyClicked=false;
+$(document).ready(function () {
+
+});
+$('#CommentSection').on('click','.commentUpdate',function(event){
+    event.preventDefault();
+    /*
+           target: 이벤트를 발생시킨 요소
+           currentTarget: 현재 이벤트가 발생한 요소
+           e.currentTarget은 이 이벤트가 걸려있는 그 요소를 가져오고,
+           e.target은 내가 누른 요소! 즉 버블링의 시초를 가져온다.
+      */
+    let currentCommentNum=event.currentTarget.dataset.commentNumber;
+    if(alreadyClicked===false){
+
+        //수정 모드에서는 화면에서 줄바꿈으로 위해 db에 저장한 <br>을 윈도우?자바?에서 엔터로 인식하는 값으로 바꾼다
+        //그러면 나중에 수정한 값을 db에 저장할때 어짜피 <br>로 처리하는 코드가 있으니까
+        //이걸 textarea에 넣어줌
+        let commentContent=$('.commentContent[data-comment-number='+currentCommentNum+']').text();
+        console.log(commentContent);
+        commentContent=commentContent.replace(/<br>/g, "\r\n");
+        //$('.commentContent[data-comment-number='+currentCommentNum+']').val(commentContent);
+
+        //div를 textarea로
+        //자기자신의 태그를 jquery로 바꾸는 법
+       /* $("#testdiv").clone().wrapAll("<div/>").parent().html();를 하면 됩니다.
+            선택한 엘리먼트 집합의 복사본을 만들고 wrapAll을 이용해서 div로 전체를 감싸버린 뒤
+        parent()로 div로 올라가서 그안에 html()을 가져오면 $("#testdiv") 자체의 HTML을 가져올 수 있습니다.
+        바닐라 자바스크립트 =>document.getElementById("spanid1").outerHTML*/
+        // html('')안에 변수를 구분하지 않고 한번에 넣으면 변수가 아니라 문자열 그대로 인식
+        //html은 지정한 요소의 하위요소를 바꿔준다
+       // $('.commentContent[data-comment-number='+currentCommentNum+']').clone().wrapAll("<div/>").parent().html('<textarea class="commentContent" data-comment-number="'+currentCommentNum+'">'+commentContent+'</textarea>');
+        //console.log($('.commentContent[data-comment-number='+currentCommentNum+']').clone().wrapAll("<div/>").parent().html());
+        //clone이니까 적용된게 화면에 안보이고 원본에 대입해줘야 하는걸까?
+        //$('.commentContent[data-comment-number='+currentCommentNum+']')= $('.commentContent[data-comment-number='+currentCommentNum+']').clone().wrapAll("<div/>").parent().html('<h1>hi</h1>');
+
+
+        /*
+        //$( 'h2' ).contents().unwrap().wrap( '<p></p>' );
+        h2 요소를 선택하고
+        내용으로 들어간 후
+        h2 태그를 없애고
+        p 태그로 감싼다.
+        새로운 태그를 붙이면서 클래스를 넣을 수도 있습니다.
+        =>내용으로 들어가서 기존 태그를 없애고 새로운 태그를 붙이기 때문에 기존 내용은 존재! 이걸 모르고 새로운 태그에 내용을 또 써주면
+        내용이 2번 반복해서 들어간다.
+
+        제이쿼리에서 html 태그를 삭제하는 것이 아닌 태그안에 있는 내용을 지워야할 경우가 있습니다. 
+        그럴경우 empty() 함수를 사용합니다.
+        출처: https://pm1122dev.tistory.com/133 [pm1122dev의 비밀노트:티스토리]
+         */
+        $('.commentContent[data-comment-number='+currentCommentNum+']').contents().unwrap().wrap('<textarea style="resize:none; width:100%; height:100%;" class="commentContent" data-comment-number="'+currentCommentNum+'"></textarea>');
+
+        // 바닐라 자바스크립트로 이런식으로 해도 된다
+        //console.log(document.querySelector(".commentContent[data-comment-number='"+currentCommentNum+"']"));
+        //document.querySelector(".commentContent[data-comment-number='"+currentCommentNum+"']").outerHTML= '<h1>hi</h1>';
+
+
+        //수정완료  버튼으로  바꾸기
+       // 여기다가 onclick 함수를 달아주자
+        //하지만 위에처럼 똑같이 하면 완료(새롭게 태그 내용) 수정(기존 contents) 식으로 되어서
+        //empty를 써보았지만 잘 안됨.
+
+        //$('.commentUpdate[data-comment-number='+currentCommentNum+']').empty().contents().unwrap().wrap('<button class="commentUpdate" data-comment-number="'+currentCommentNum+'">수정완료</button>');
+        //상위의 상위 태그를 제거해버리므로 html로 내용을 바꿔준다음 가짜로 만든 바로 위 태그를 없애기 위해 children으로 button 변수자체로 내려가  unwrap을 한다
+        $('.commentUpdate[data-comment-number='+currentCommentNum+']').wrap('<div>').parent().html('<button class="commentUpdate" data-comment-number="'+currentCommentNum+'">수정완료</button>').children().unwrap();
+
+        clickedCommentNum=currentCommentNum;
+        alreadyClicked=true;
+    }
+    //이미 눌렀었던 상태에서 아까눌렀던 댓글번호와 현재 누른 댓글 번호가 다르면 다른 대상을 눌렀으므로 수정 완료버튼 동작 불가능
+    if(alreadyClicked==true && clickedCommentNum!=currentCommentNum){
+        alert("이미 다른 댓글을 수정하기로 해놓고서는 완료안했습니다.");
+    }
+
+});
 
 //답글 쓰기 버튼
 $('#writeComment > button').on('click',function(){
