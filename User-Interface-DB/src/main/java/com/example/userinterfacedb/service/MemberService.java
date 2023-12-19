@@ -32,6 +32,17 @@ public class MemberService {
         }
     }
 
+    public int checkName(String name){
+        MemberDTO memberDTO=sqlSession.selectOne(NAMESPACE+".memberByName",name);
+        //존재해서 이미 있으면 중복이름
+        if(memberDTO !=null){
+            return 1;
+        }
+        //존재하지 않아 없으면 중복이름 없음
+        else{
+            return 0;
+        }
+    }
     public void joinMember(MemberDTO memberDTO){
         sqlSession.insert(NAMESPACE+".join",memberDTO);
     }
