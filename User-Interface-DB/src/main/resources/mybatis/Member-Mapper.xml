@@ -6,6 +6,11 @@
         where login_id=#{loginId}
     </select>
 
+    <select id="memberByName" parameterType="string" resultType="memberDTO">
+        select * from members
+        where name=#{name}
+    </select>
+
     <insert id="join" parameterType="memberDTO">
         insert into members(name,login_id,password)
         values(#{name},#{loginId},#{password})

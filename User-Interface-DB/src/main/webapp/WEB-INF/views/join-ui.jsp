@@ -28,7 +28,7 @@
         <form method="post" id="join-form" action="/joinOk" name="joinForm">
             <input type="text" name="name" placeholder="name">
             <p><span id="decide2" style='color:#f095b7;'>이름 중복 여부를 확인해주세요.</span>
-                <input type="button" value="이름 중복확인" class="btn-gradient red mini" onclick="checkId()">
+                <input type="button" value="이름 중복확인" class="btn-gradient red mini" onclick="checkName()">
             </p>
     <%-- <input type="number" name="userBirth" placeholder="생년월일 8자리">--%>
             <input type="text" name="loginId" placeholder="id"> <br>
@@ -44,17 +44,20 @@
 </body>
 <script>
     let checkIdOk=false;
+    let checkNameOk=false;
     function realSubmit(e){
         //기본적으로 바로 submit하는걸 막고, 검사한후 submit한다
         e.preventDefault();
         let firstPassword=$("input[name='password']").val();
         let confirmPassword=$("input[name='passwordConfirm']").val();
-        if(firstPassword==confirmPassword && checkIdOk==true){
+        console.log(firstPassword);
+        console.log(confirmPassword);
+        if(firstPassword==confirmPassword && checkIdOk==true && checkNameOk==true){
             console.log("회원가입 자격있음");
              $('#join-form').submit();
             // $('joinForm').submit();
         }
-        else if(firstPassword!=confirmPassword && checkIdOk==true){
+        else if(firstPassword!==confirmPassword  && checkIdOk==true && checkNameOk==true){
             alert("비밀번호칸과 비밀번호 확인 칸의 내용이 다릅니다.");
         }
         else{
@@ -95,5 +98,36 @@
 
     }
 
+
+    function checkName(){
+        let name= $("input[name='name']").val();
+
+        $.ajax({
+           type:'get',
+            url:'/checkName/'+name,
+            contentType:"application/json",
+            dataType:"json",
+            success:function(result){
+                //중복됨
+                if(result==1){
+                    //태그제외하고 순수 안의 글자만 바꿈
+                    $('#decide2').text('이름이 중복 되었습니다');
+                    $('#decide2').css('color','red');
+                    console.log(result);
+                    checkNameOk=false;
+                }
+                //중복안됨
+                else{
+                    $('#decide2').text('사용가능한 이름입니다');
+                    $('#decide2').css('color','#f095b7');
+                    console.log(result);
+                    checkNameOk=true;
+                }
+            },
+            error:function(request, status, error){
+               console.log(error);
+            }
+        });
+    }
 </script>
 </html>

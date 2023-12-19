@@ -21,4 +21,11 @@ public class MemberRestController {
         count=memberService.checkId(loginId);
         return count;
     }
+
+    @GetMapping("/checkName/{name}")
+    public int checkName2(@PathVariable String name){
+        int count;
+        count=memberService.checkName(name);
+        return count;
+    }
 }
