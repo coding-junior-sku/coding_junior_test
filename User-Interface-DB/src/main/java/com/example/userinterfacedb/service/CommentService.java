@@ -43,4 +43,8 @@ public class CommentService {
     public void commentUpdate(CommentDTO commentDTO){
         sqlSession.update(NAMESPACE+".commentUpdate",commentDTO);
     }
+
+    public void commentDelete(int id){
+        sqlSession.delete(NAMESPACE+".commentDelete",id);
+    }
 }

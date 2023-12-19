@@ -459,7 +459,22 @@ function updateOk(event,currentCommentNum){
     )
 }
 
-//답글 쓰기 버튼
+//댓글 삭제 버튼
+$('#CommentSection').on('click','.commentDelete',function(e){
+    let currentCommentNumber= e.currentTarget.dataset.commentNumber;
+    commentAjax.remove(
+        currentCommentNumber,
+        function(result){
+            console.log(result);
+
+            //상태 바꿔주고 나서 리스트 출력.
+            getCommentList();
+        }
+    )
+})
+
+
+//댓글 쓰기 버튼
 $('#writeComment > button').on('click',function(){
     console.log('답글쓰기버튼 눌림');
     let commentContent= $('#writeComment textarea').val();

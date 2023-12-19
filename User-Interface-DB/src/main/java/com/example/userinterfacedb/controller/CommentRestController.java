@@ -38,6 +38,13 @@ public class CommentRestController {
         commentService.commentUpdate(commentDTO);
         return "{\"result\":\"success\"}";
     }
+
+    @GetMapping("/commentDeleteOk/{commentId}")
+    public String commentDeleteOk(@PathVariable("commentId") int id){
+        commentService.commentDelete(id);
+        return "{\"result\":\"success\"}";
+    }
+
     @PostMapping("/commentWriteOk")
     public String commentWriteOk(@RequestBody CommentDTO commentDTO){
         commentService.commentInsert(commentDTO);

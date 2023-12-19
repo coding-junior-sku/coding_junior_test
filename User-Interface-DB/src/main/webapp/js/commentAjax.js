@@ -41,9 +41,9 @@ let commentAjax=(function(){
             type: "post",
             data: JSON.stringify(commentDTO),
             contentType: "application/json; charset=utf-8",
-            success: function () {
+            success: function (result) {
                 if (callback) {
-                    callback();
+                    callback(result);
                 }
             }
         });
@@ -51,11 +51,11 @@ let commentAjax=(function(){
 
     function remove(commentId, callback){
         $.ajax({
-            url: "/commentDelete/" + commentId,
+            url: "/commentDeleteOk/" + commentId,
             type: "get",
-            success: function(){
+            success: function(result){
                 if(callback){
-                    callback();
+                    callback(result);
                 }
             }
         })
