@@ -36,7 +36,7 @@
 
     <update id="boardUpdate" parameterType="boardDTO">
         update boards
-        set title=#{title} , content=#{content}
+        set title=#{title} , content=#{content} , write_time=now()
         where id=#{id}
     </update>
 

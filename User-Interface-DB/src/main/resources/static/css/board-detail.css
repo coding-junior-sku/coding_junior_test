@@ -312,6 +312,15 @@ body{
 
     text-align:center;
 
+    /*
+    white-space 스타일을 사용하는 방법
+    스타일 시트(CSS)를 사용해서 개행과 공백등이 원래대로 보이도록 처리하는 방법을 알아봅니다.
+    출처: https://offbyone.tistory.com/326 [쉬고 싶은 개발자:티스토리]
+    pre : 여러개의 공백과 개행문자가 모두 표현됩니다. <pre> 태그와 같이 동작합니다. 긴 행은 개행문자에서만 개행이 되고, wrap  되지 않습니다.
+    출처: https://offbyone.tistory.com/326 [쉬고 싶은 개발자:티스토리]
+    */
+    white-space:pre;
+
 }
 
 .comment:nth-child(3){

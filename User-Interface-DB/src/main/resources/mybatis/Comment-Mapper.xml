@@ -40,11 +40,13 @@
 <!--        where b.id=#{id}-->
 <!--    </select>-->
 
-<!--    <update id="commentUpdate" parameterType="boardDTO">-->
-<!--        update boards-->
-<!--        set title=#{title} , content=#{content}-->
-<!--        where id=#{id}-->
-<!--    </update>-->
+    <update id="commentUpdate" parameterType="commentDTO">
+        update comments
+        set  content= #{content} , write_time= now()
+        where id=#{id}
+    </update>
+
+
 
 <!--    <delete id="commentDelete" parameterType="int">-->
 <!--        delete from boards-->

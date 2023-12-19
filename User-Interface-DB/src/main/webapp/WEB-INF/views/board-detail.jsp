@@ -322,6 +322,7 @@ let alreadyClicked=false;
 $(document).ready(function () {
 
 });
+
 $('#CommentSection').on('click','.commentUpdate',function(event){
     event.preventDefault();
     /*
@@ -335,11 +336,28 @@ $('#CommentSection').on('click','.commentUpdate',function(event){
 
         //수정 모드에서는 화면에서 줄바꿈으로 위해 db에 저장한 <br>을 윈도우?자바?에서 엔터로 인식하는 값으로 바꾼다
         //그러면 나중에 수정한 값을 db에 저장할때 어짜피 <br>로 처리하는 코드가 있으니까
-        //이걸 textarea에 넣어줌
-        let commentContent=$('.commentContent[data-comment-number='+currentCommentNum+']').text();
-        console.log(commentContent);
+        //div에서는 .val()이 아니라 .text()
+        //이 text()가 <br>을 무시하고 한줄로 가져온다. css에 white-space:pre; 사용해야함=>해결 안됨
+        //value 는 인풋 속성이므로 div의 value는 어트리뷰트로 가져오셔야 합니다.->해결 안됨
+        /*
+            jQuery의 공식문서를 보면 .val()이 가져오는 것은 현재 상태의 값이고, .attr('value')는 일치하는 element 중 첫번째 값을 가져온다고 나와있습니다.
+
+            .val()은 HTML 코드에서 객체가 원하는 값을 가져오는 반면에, .attr('value')는 HTML 문서가 생성된 후에 객체의 실제 값을 가져옵니다.
+
+            그렇기 때문에 위의 코드처럼 HTML 문서에 반영되기 전에 .attr('value')를 통해서 접근하면, 아직까지는 없는 값이기 때문에 undefined를 받아오는 것입니다.
+
+            즉, 이미 존재하는 HTML 문서에 있는 element를 가져오는 것에서는 둘이 같은 결과를 내지만, 실시간으로 생성해서 반영하는 코드에서는 다른 결과를 낼 수 있습니다.
+
+            그렇기 때문에, 동적인 element들의 값을 다룰 때에는 .val() 습관을 들이는 것이 중요합니다.
+         */
+        //html()=>요소의 자식태그들의 태그나 문자열을 모두 읽어옴
+
+        let commentContent=$('.commentContent[data-comment-number='+currentCommentNum+']').html();
+        console.log("commentContent1:"+commentContent);
         commentContent=commentContent.replace(/<br>/g, "\r\n");
-        //$('.commentContent[data-comment-number='+currentCommentNum+']').val(commentContent);
+        //$('.commentContent[data-comment-number='+currentCommentNum+']').text(commentContent);
+        console.log("commentContent2:"+commentContent);
+        $('.commentContent[data-comment-number='+currentCommentNum+']').html( commentContent);
 
         //div를 textarea로
         //자기자신의 태그를 jquery로 바꾸는 법
@@ -369,7 +387,7 @@ $('#CommentSection').on('click','.commentUpdate',function(event){
         그럴경우 empty() 함수를 사용합니다.
         출처: https://pm1122dev.tistory.com/133 [pm1122dev의 비밀노트:티스토리]
          */
-        $('.commentContent[data-comment-number='+currentCommentNum+']').contents().unwrap().wrap('<textarea style="resize:none; width:100%; height:100%;" class="commentContent" data-comment-number="'+currentCommentNum+'"></textarea>');
+        $('.commentContent[data-comment-number='+currentCommentNum+']').contents().unwrap().wrap('<textarea style="resize:none; display:block;" class="commentContent" data-comment-number="'+currentCommentNum+'"></textarea>');
 
         // 바닐라 자바스크립트로 이런식으로 해도 된다
         //console.log(document.querySelector(".commentContent[data-comment-number='"+currentCommentNum+"']"));
@@ -383,7 +401,7 @@ $('#CommentSection').on('click','.commentUpdate',function(event){
 
         //$('.commentUpdate[data-comment-number='+currentCommentNum+']').empty().contents().unwrap().wrap('<button class="commentUpdate" data-comment-number="'+currentCommentNum+'">수정완료</button>');
         //상위의 상위 태그를 제거해버리므로 html로 내용을 바꿔준다음 가짜로 만든 바로 위 태그를 없애기 위해 children으로 button 변수자체로 내려가  unwrap을 한다
-        $('.commentUpdate[data-comment-number='+currentCommentNum+']').wrap('<div>').parent().html('<button class="commentUpdate" data-comment-number="'+currentCommentNum+'">수정완료</button>').children().unwrap();
+        $('.commentUpdate[data-comment-number='+currentCommentNum+']').wrap('<div>').parent().html('<button class="commentUpdate" data-comment-number="'+currentCommentNum+'" onclick="updateOk(event,'+currentCommentNum+');">수정완료</button>').children().unwrap();
 
         clickedCommentNum=currentCommentNum;
         alreadyClicked=true;
@@ -394,6 +412,52 @@ $('#CommentSection').on('click','.commentUpdate',function(event){
     }
 
 });
+
+//수정 완료 버튼을 누르면
+//csv.html:24 Uncaught ReferenceError: e is not defined at HTMLButtonElement.onclick
+/*
+0
+
+The error tells us that download_csv is not a global in your script. This is one of the many reasons not to use onclick-attribute-style event handlers: The functions they call have to be globals.
+
+Either:
+
+Make it a global (not a great idea, the global namespace is already far too crowed), or
+
+Use modern event handling, perhaps by giving your button an id and then using document.getElementById("the-id").addEventListener("click", download_csv); to hook it up.
+ */
+function updateOk(event,currentCommentNum){
+    event.preventDefault();
+    <%--commentAjax.getList({--%>
+    <%--    boardId:${board.id},--%>
+    <%--    page:globalThis.page--%>
+    <%--},showCommentList);--%>
+    let changeContent=$('textarea[data-comment-number='+currentCommentNum+']').val();
+    changeContent=changeContent.replace(/\n/g, "<br>");
+    changeContent=changeContent.replace(/\r\n/g, "<br>");
+    $('textarea[data-comment-number='+currentCommentNum+']').val(changeContent);
+    //db에 저장할때는 \r\n을 <br>로
+    commentAjax.update(
+        {
+            content:changeContent,
+            id:currentCommentNum
+        },
+        function(result){
+            console.log(result);
+            $('.commentUpdate[data-comment-number='+currentCommentNum+']').wrap('<div>').parent().html('<button class="commentUpdate" data-comment-number="'+currentCommentNum+'">수정</button>').children().unwrap();
+            $('.commentContent[data-comment-number='+currentCommentNum+']').contents().unwrap().wrap('<div class="commentContent" data-comment-number="'+currentCommentNum+'"></div>');
+
+
+            clickedCommentNum=0;
+            alreadyClicked=false;
+            currentCommentNum=0;
+
+
+            //상태를 바꿔주고 나서  리스트 출력
+            getCommentList();
+        }
+    )
+}
 
 //답글 쓰기 버튼
 $('#writeComment > button').on('click',function(){
