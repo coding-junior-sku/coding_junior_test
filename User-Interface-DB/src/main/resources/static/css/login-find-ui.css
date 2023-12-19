@@ -12,9 +12,9 @@ body{
     font-family: 'Roboto', sans-serif;
 }
 
-a{ 
-    color: #f095b7; 
-    text-decoration: none; 
+a{
+    color: #f095b7;
+    text-decoration: none;
 }
 
 .login-find-wrapper{
@@ -49,7 +49,14 @@ a{
     margin-top: 20px;
 }
 
-#login-find-form > input[type="links"]{
+#idResult{
+    text-align:center;
+}
+
+#idResult:focus{
+    outline:none;
+}
+#login-find-form > .links{
     text-align: center;
     margin-bottom: 10px;
 }

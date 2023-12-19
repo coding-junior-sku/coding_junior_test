@@ -41,7 +41,10 @@ public class MemberController {
         return "redirect:/";
     }
 
-
+    @GetMapping("/goFindId")
+    public String goFindId(){
+        return "login-find-ui";
+    }
 
     @PostMapping("/joinOk")
     public String joinOk(MemberDTO memberDTO){

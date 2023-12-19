@@ -1,10 +1,9 @@
 package com.example.userinterfacedb.controller;
 
+import com.example.userinterfacedb.model.MemberDTO;
 import com.example.userinterfacedb.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class MemberRestController {
@@ -27,5 +26,14 @@ public class MemberRestController {
         int count;
         count=memberService.checkName(name);
         return count;
+    }
+
+    @PostMapping("/idFind")
+    public String findId(@RequestBody MemberDTO memberDTO){
+        String userName= memberDTO.getName();
+        System.out.println("넘어온 이름:"+userName);
+        String loginId=memberService.findLoginId(userName);
+        System.out.println("loginId : "+loginId);
+        return loginId;
     }
 }

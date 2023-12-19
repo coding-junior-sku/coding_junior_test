@@ -43,6 +43,20 @@ public class MemberService {
             return 0;
         }
     }
+
+    public String findLoginId(String name){
+        MemberDTO memberDTO=sqlSession.selectOne(NAMESPACE+".memberByName",name);
+        System.out.println("memberDTO 아이디 찾기:"+memberDTO);
+        //null에서 get속성으로 하면 에러가 나면서 아예 안되므로 원하는 방식대로 하려면 null return
+        if(memberDTO==null){
+            return null;
+        }
+        else{
+            return memberDTO.getLoginId();
+        }
+
+    }
+
     public void joinMember(MemberDTO memberDTO){
         sqlSession.insert(NAMESPACE+".join",memberDTO);
     }
