@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat Window</title>
+
+    <link rel="stylesheet" href="./chat-ui_jmg.css">
+    <script src="./includeHTML.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header include-html="./header.html"> </header>
+    <div class="chat-container">
+        <div class="chat-header">
+            <h2>뉴스 키워드를 입력해 주세요</h2>
+        </div>
+        <div class="chat-messages">
+            <!-- Chat messages will be displayed here 
+            <p>Welcome to the chat!</p>-->
+            <!-- Add more chat messages as needed -->
+        </div>
+        <div class="chat-input">
+            <textarea placeholder="Type your message..."></textarea>
+            <button>Send</button>
+        </div>
+    </div>
+    
+</body>
+<script>
+    includeHTML();
+</script>
+</html>

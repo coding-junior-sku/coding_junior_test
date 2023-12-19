@@ -18,7 +18,7 @@
     <!-- limit #{startIndex} ,#{amount}-->
     <!--parameter를 객체 속성이 아니라 따로따로 여러개로 쓸때 map으로 받는다-->
     <select id="selectCommentByPage" parameterType="java.util.HashMap" resultType="commentDTO">
-        select c.id , c.writer , m.login_id as writerLoginId , c.content, c.alert_number, c.alert_handle , c.write_time , c.board_id
+        select c.id , c.writer , m.login_id as writerLoginId , c.content, c.write_time , c.board_id
         from comments c
                  inner join members m
                  on c.writer=m.id
