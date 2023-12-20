@@ -263,12 +263,29 @@ body{
     border:1px solid #f095b7;
 }
 
+/*
+    ‘border-collapse’는 table 요소를 꾸미므로 div에서 사용하고 싶을 때는
+    요소를 테이블로 만들어줘야 한다.
+    부모 div(section)에
+    Display :table;
+    자식 div에
+     display : table-cell;
+    을 주어 table 속성으로 만들어준 뒤
+    부모 div에
+    border-collapse: collapse;
+    를 추가해주면 테두리가 겹쳐진 div를 만들 수 있다.
+
+    =>.comment의 border top, border bottom이 겹치므로
+ */
+
 #CommentSection{
     width:100%;
     height:1100px;
 
     margin-top:20px;
 
+    display :table;
+    border-collapse: collapse;
 }
 
 .comment{
@@ -278,6 +295,36 @@ body{
     margin: 10px auto;
 
     border-top: 1px solid #dddddd;
+    border-bottom: 1px solid #dddddd;
+
+    /*display : table-cell;*/
+
+    /*tr 요소처럼 표현(행)
+        table-cell보다 낫긴하지만 뭔가 이상하다...
+    */
+    /*display: table-row;*/
+
+    /*
+    absolute가 아닐 경우에는 margin-left: -1px 을 지정해서 포개지도록 하면 됩니다.
+    https://www.inflearn.com/questions/241801/border-%EA%B2%B9%EC%B9%A8%EC%9D%80-%EC%96%B4%EB%96%BB%EA%B2%8C-%ED%95%B4%EA%B2%B0%ED%95%98%EB%82%98%EC%9A%94
+    */
+    /*margin-bottom:-1px;*/
+}
+
+.comment:nth-child(2){
+    /*
+   absolute가 아닐 경우에는 margin-left: -1px 을 지정해서 포개지도록 하면 됩니다.
+   https://www.inflearn.com/questions/241801/border-%EA%B2%B9%EC%B9%A8%EC%9D%80-%EC%96%B4%EB%96%BB%EA%B2%8C-%ED%95%B4%EA%B2%B0%ED%95%98%EB%82%98%EC%9A%94
+   */
+    margin-top:-10px;
+}
+
+.comment:nth-child(3){
+    /*
+   absolute가 아닐 경우에는 margin-left: -1px 을 지정해서 포개지도록 하면 됩니다.
+   https://www.inflearn.com/questions/241801/border-%EA%B2%B9%EC%B9%A8%EC%9D%80-%EC%96%B4%EB%96%BB%EA%B2%8C-%ED%95%B4%EA%B2%B0%ED%95%98%EB%82%98%EC%9A%94
+   */
+    margin-top:-10px;
 }
 
 .commentHeader{
@@ -323,9 +370,7 @@ body{
 
 }
 
-.comment:nth-child(3){
-    border-bottom: 1px solid #dddddd;
-}
+
 .commentAlert{
     width:100%;
     height:30px;
