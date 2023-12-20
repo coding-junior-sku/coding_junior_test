@@ -57,6 +57,18 @@ public class MemberService {
 
     }
 
+    public String findPassword(MemberDTO memberDTO){
+        MemberDTO resultMemberDTO = sqlSession.selectOne(NAMESPACE+".memberByLoginIdAndName",memberDTO);
+        System.out.println("memberDTO 비밀번호 찾기:"+resultMemberDTO);
+        //null에서 get속성으로 하면 에러가 나면서 아예 안되므로 원하는 방식대로 하려면 null return
+        if(resultMemberDTO==null){
+            return null;
+        }
+        else{
+            return resultMemberDTO.getPassword();
+        }
+    }
+
     public void joinMember(MemberDTO memberDTO){
         sqlSession.insert(NAMESPACE+".join",memberDTO);
     }
@@ -66,7 +78,6 @@ public class MemberService {
         loginMember=sqlSession.selectOne(NAMESPACE+".loginOk",memberDTO);
         return loginMember;
     }
-
 
 
 }

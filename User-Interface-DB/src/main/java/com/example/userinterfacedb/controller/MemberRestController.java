@@ -32,8 +32,21 @@ public class MemberRestController {
     public String findId(@RequestBody MemberDTO memberDTO){
         String userName= memberDTO.getName();
         System.out.println("넘어온 이름:"+userName);
+
         String loginId=memberService.findLoginId(userName);
         System.out.println("loginId : "+loginId);
         return loginId;
+    }
+
+    @PostMapping("/passwordFind")
+    public String findPassword(@RequestBody MemberDTO memberDTO){
+        String name=memberDTO.getName();
+        System.out.println("넘어온 이름:"+ name);
+        String loginId= memberDTO.getLoginId();
+        System.out.println("넘어온 로그인 아이디: "+loginId);
+
+        String password= memberService.findPassword(memberDTO);
+        System.out.println("password : "+password);
+        return password;
     }
 }

@@ -46,6 +46,11 @@ public class MemberController {
         return "login-find-ui";
     }
 
+    @GetMapping("/goFindPassword")
+    public String goFindPassword(){
+        return "password-find-ui";
+    }
+
     @PostMapping("/joinOk")
     public String joinOk(MemberDTO memberDTO){
         System.out.println(memberDTO);
