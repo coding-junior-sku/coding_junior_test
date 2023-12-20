@@ -32,7 +32,7 @@
             <button  class="submitButton" type="button" onclick="goLogin()">Login</button>
             <button class="submitButton" type="button" onclick="goJoin()">회원가입</button>
             <div class="links">
-                <a href="/goFindId">아이디 찾기</a> | <a href="password-find-ui.html">비밀번호 찾기</a>
+                <a href="/goFindId">아이디 찾기</a> | <a href="/goFindPassword">비밀번호 찾기</a>
             </div>
         </form>
     </div>
