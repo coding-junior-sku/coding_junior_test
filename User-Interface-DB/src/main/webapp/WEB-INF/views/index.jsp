@@ -1,50 +1,54 @@
 <%@page contentType="text/html;charset=UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<html lang="ko">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>메인페이지</title>
-    <link href="/resources/css/main-ui.css" rel="stylesheet" type="text/css" />
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
-    
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&display=swap" rel="stylesheet">
+    <title>index</title>
+    <link href="/resources/css/index.css" rel="stylesheet" type="text/css" />
 
-    <script src="/resources/js/includeHTML.js" type="text/javascript"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!--<link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300&display=swap" rel="stylesheet">-->
+
+    <!--    <script src="/resources/js/includeHTML.js"></script>-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
-    <!-- <div id="chatting_header">
-        <div id="cloud_logo"></div>
-        <div class="header_nav"><a href="#">챗봇과 상담</a></div>
-        <div class="header_nav"><a href="#">로그인</a></div>
-        <div class="header_nav"><a href="#">회원가입</a></div>
-    </div> -->
-
-    <jsp:include page="./header.jsp" />
-
-
-    <div class="banner">
-        <div>
-        <h2 style="font-family: 'Gowun Dodum', sans-serif;">뉴스키워드 요약 사이트에 오실걸 환영합니다.</h2>
+    <div class="container">
+        <div class="left-side">
+            <div class="color-text">Chat News Summary●</div>
+            <div id=container01>
+                 
+                <div id=flip>
+                  
+                  <div><div>Chat News Summary</div></div>
+                  <div><div>Start chatting now!</div></div>
+                  <div><div>Let's go</div></div>
+                  
+                </div>
+                
+              </div>
         </div>
-        <div>
-             <h4 style="font-family: 'Gowun Dodum', sans-serif;">학습시킨 AI를 이용하여 금융카테고리를 포함한 뉴스의 기사 내용을 짧게 자동으로 요약해주는 서비스입니다. </h4>
-             <h4 style="font-family: 'Gowun Dodum', sans-serif;">  구름이(챗봇)한테 뉴스 키워드 단어를 입력하면 그 단어와 관련된 3개의 기사를 원본 링크 형태로 찾아주고  </h4>
-             <h4 style="font-family: 'Gowun Dodum', sans-serif;">본문의 키워드, 문장 중요도 등을 판단하여 각각 기사를 한 문장씩 총 3개의 문장으로 요약해줍니다.  </h4>
-             <h4 style="font-family: 'Gowun Dodum', sans-serif;">  24시간이 모자란 여러분! </h4>
-             <h4 style="font-family: 'Gowun Dodum', sans-serif;">  원하는 기사를 구글이나 네이버에 검색하고 읽는데 많은 시간을 투자하지 마시고  </h4>
-             <h4 style="font-family: 'Gowun Dodum', sans-serif;">이제는 이서비스를 이용해 시간을 절약하시길 바랍니다.</h4>
+        <div class="right-side">
+            <div class="get-started">Get started</div>
+            <div class="buttons">
+                <button id="loginButton" class="button">로그인</button>
+                <button id="signUpButton" class="button">회원가입</button>    
+            </div>
         </div>
-     </div>   
-     
-   
+    </div>
+
+
 </body>
 <script>
-    includeHTML();
+    $('#loginButton').on('click',function(){
+       location.href='/goLogin';
+    });
+
+    $('#signUpButton').on('click',function(){
+        location.href='/goJoin';
+    });
 </script>
 </html>
