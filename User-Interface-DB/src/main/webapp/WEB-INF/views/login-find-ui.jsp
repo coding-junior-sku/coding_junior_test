@@ -25,7 +25,7 @@
           <input type="submit" value="아이디 찾기"/>
           <input type="text" id="idResult" readonly/>
           <div class="links"> 
-              <a href="/goJoin">회원가입</a> | <a href="#">비밀번호 찾기</a>
+              <a href="/goJoin">회원가입</a> | <a href="/goFindPassword">비밀번호 찾기</a>
           </div>
       </div>
     </div>  
@@ -36,6 +36,7 @@ $('input[type="submit"]').on('click',function(e){
     let name=$('input[name="userName"]').val();
     console.log(name);
     let memberDTO={name:name};
+
     $.ajax({
         type:'post',
         url:'/idFind',
