@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>채팅페이지</title>
     <link href="/resources/css/header.css" rel="stylesheet" type="text/css" />
-    <link href="/resources/css/chatting-ui.css" rel="stylesheet" type="text/css" />
+    <link href="/resources/css/chatting-ui2.css" rel="stylesheet" type="text/css" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Gowun+Dodum&display=swap" rel="stylesheet">
@@ -18,6 +18,9 @@
     <jsp:include page="./header.jsp" />
 
     <div id="chatting_section">
+        <div class="chat-header">
+            <h2>뉴스 키워드를 입력해 주세요</h2>
+        </div>
         <div id="chatting_contents">
             <c:forEach var="chat" items="${chats}">
                 <c:choose>
@@ -55,9 +58,9 @@
         </div>
         <div id="user_input_section">
             <div id="user_input">
-                <textarea type="text" id="user_question"></textarea>
+                <textarea type="text" id="user_question" placeholder="Type your message..."></textarea>
             </div>
-            <div id="input_button_section"><button id="submit_button">보내기</button></div>
+            <div id="input_button_section"><button id="submit_button">send</button></div>
         </div>
     </div>
 
