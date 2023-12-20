@@ -55,7 +55,7 @@ public class MemberController {
     public String joinOk(MemberDTO memberDTO){
         System.out.println(memberDTO);
         memberService.joinMember(memberDTO);
-        return "redirect:/";
+        return "redirect:/goLogin";
     }
 
     @PostMapping("/loginOk")
@@ -66,7 +66,7 @@ public class MemberController {
         //로그인 성공
         if(loginMember!=null){
             httpSession.setAttribute("loginId",loginMember.getId());
-            return "redirect:/";
+            return "redirect:/goChatting";
         }
         //로그인 실패
         else{
