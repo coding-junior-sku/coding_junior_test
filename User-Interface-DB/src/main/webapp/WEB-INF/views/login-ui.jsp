@@ -25,11 +25,11 @@
 
     <br>
     <div class="login-wrapper">
-        <h2>Login</h2>
+        <h2>로그인</h2>
         <form method="post" id="login-form">
             <input type="text" name="loginId" placeholder="id">
             <input type="password" name="password" placeholder="Password">
-            <button  class="submitButton" type="button" onclick="goLogin()">Login</button>
+            <button  class="submitButton" type="button" onclick="goLogin()">로그인</button>
             <button class="submitButton" type="button" onclick="goJoin()">회원가입</button>
             <div class="links">
                 <a href="/goFindId">아이디 찾기</a> | <a href="/goFindPassword">비밀번호 찾기</a>
