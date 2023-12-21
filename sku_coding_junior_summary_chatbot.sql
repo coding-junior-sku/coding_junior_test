@@ -14,7 +14,7 @@ create table news (
 
 desc news;
 select * from news;
-select * from news where news_title='';
+select * from news where news_title='어르신 추운 겨울 감기 조심하세요';
 show table status where name = 'news';
 
 #truncate news;

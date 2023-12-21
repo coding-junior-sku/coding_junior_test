@@ -9,12 +9,10 @@ body{
     background-color:#fafdf7;
     font-size: 14px;
     font-family: 'Roboto', sans-serif;
+    /*font-family: 'Dongle', sans-serif;*/
 }
 
-a{
-    color: #f095b7;
-    text-decoration: none;
-}
+
 
 .join-wrapper{
     width: 400px;
@@ -44,36 +42,43 @@ a{
 #join-form > input::placeholder{
     color: #D2D2D2;
 }
+
+#join-form>p{
+    margin-bottom:16px;
+}
+
 #join-form > button#submitButton{
     width:200px;
-    height:30px;
+    height:50px;
     color: #F8F8F8;
     font-size: 16px;
+    font-weight:bold;
+
     background-color: #f095b7;
     margin-top: 20px;
 }
 
-#join-form > input[type="checkbox"]{
-    display: none;
-}
-#join-form > label{
-    color: #999999;
-}
-#join-form input[type="checkbox"] + label{
-    cursor: pointer;
-    padding-left: 26px;
-    background-image: url("checkbox.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-}
-#join-form input[type="checkbox"]:checked + label{
-    background-image: url("checkbox-active.png");
-    background-repeat: no-repeat;
-    background-size: contain;
-}
+/*#join-form > input[type="checkbox"]{*/
+/*    display: none;*/
+/*}*/
+/*#join-form > label{*/
+/*    color: #999999;*/
+/*}*/
+/*#join-form input[type="checkbox"] + label{*/
+/*    cursor: pointer;*/
+/*    padding-left: 26px;*/
+/*    background-image: url("checkbox.png");*/
+/*    background-repeat: no-repeat;*/
+/*    background-size: contain;*/
+/*}*/
+/*#join-form input[type="checkbox"]:checked + label{*/
+/*    background-image: url("checkbox-active.png");*/
+/*    background-repeat: no-repeat;*/
+/*    background-size: contain;*/
+/*}*/
 
 button {
-    width: 200px; height: 200;
+    width: 200px; height: 200px;
 }
 
 .btn-gradient.mini {
