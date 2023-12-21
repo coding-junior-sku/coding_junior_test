@@ -209,7 +209,19 @@ function showCommentList(result){
     result.commentDTOList.forEach(commentDTO=>{
         let oneComment='';
         oneComment+='<div class="comment">';
-            oneComment+='<div class="commentHeader"><div>'+commentDTO.writerLoginId+'</div><div>'+commentDTO.writeTime+'</div></div>';
+            /*
+                자바스크립트가 자바랑 다르게 지맘대로 시간형식을 바꿔서 출력한다.
+                그래서 시간 포맷을 따로 처리해줘야 한다.
+                https://gurtn.tistory.com/65
+                toISOString() 메서드는 "YYYY-MM-DDTHH:mm:ss.sssZ" 형식으로 정보가 반환되며,
+                replace(), slice(0, -5)으로 불필요한 정보를 제거해줍니다.
+                해당 메서드에서 출력되는 시간은 UTC(미국) 기준으로 출력됩니다.
+                이를 대한민국 서울 시간에 맞추기 위해서 3240 * 10000(9시간) 수식을 현재 시간에 더해주어야 합니다.
+             */
+            const TIME_ZONE = 9 * 60 * 60 * 1000; // 9시간
+            let date = new Date(commentDTO.writeTime);
+            let format_date=new Date(date.getTime() + TIME_ZONE).toISOString().replace('T', ' ').slice(0, -5);
+            oneComment+='<div class="commentHeader"><div>'+commentDTO.writerLoginId+'</div><div>'+format_date+'</div></div>';
             oneComment+='<div class="commentContent" data-comment-number="'+commentDTO.id+'">';
                 oneComment+=commentDTO.content;
             oneComment+='</div>';
