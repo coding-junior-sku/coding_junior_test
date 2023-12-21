@@ -9,9 +9,13 @@
 body{
     background-color:#fafdf7;
     font-family: 'Gowun Dodum', sans-serif;
+    /*font-family: 'Dongle', sans-serif;*/
 }
 
-/* 스크롤바 전체 영역 
+button{
+    font-family: 'Gowun Dodum', sans-serif;
+}
+/* 스크롤바 전체 영역
 커스텀 스크롤바 스타일링을 하겠다는 기본 속성 이다. 이 설정이 없으면 다른 모든 것은 비활성화 된다.
 출처: https://inpa.tistory.com/entry/CSS-🌟-스크롤-바Scrollbar-꾸미기-속성-총정리 [Inpa Dev 👨‍💻:티스토리]
 */
@@ -28,17 +32,17 @@ body{
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background-color:#f095b7;
+    background-color:#f095b7;
 }
 
 /* 스크롤이 움직이는 뒷 배경 */
 ::-webkit-scrollbar-track {
-	background: #F7E2E1; /* 스크롤바 뒷 배경 색상 */
+    background: #F7E2E1; /* 스크롤바 뒷 배경 색상 */
 }
 
 #section{
     width:1000px;
-    height:2000px;
+    /*height:2000px;*/
 
     margin: 0 auto;
 
@@ -64,6 +68,8 @@ body{
 #containerBody{
     width:100%;
     height:350px;
+
+
 }
 
 #header{
@@ -148,10 +154,10 @@ body{
 
 #content{
     width:100%;
-    height:260px;
+    height:280px;
 
-    margin-top:10px;
-    margin-bottom:10px;
+    /*margin-top:10px;*/
+    /*margin-bottom:10px;*/
 
     text-align:center;
 
@@ -161,49 +167,54 @@ body{
     스크롤기능이 필요할 때는 스크롤이 보이도록*/
     overflow-y: auto;
     /*overflow-x:hidden;*/
+
+    padding:10px 10px;
+
+    border-left: 1px solid #dddddd;
+    border-right:1px solid #dddddd;
 }
 
-#alertSection{
-    width:100%;
-    height:50px;
+/*#alertSection{*/
+/*    width:100%;*/
+/*    height:50px;*/
 
-    text-align:right;
+/*    text-align:right;*/
 
-    
-} 
-#alertSection>div{
-    /*자식들의 수직높이를 맞추기 위해 억지로 쓴다.*/
-    display:flex;
-    align-items: center;
-    justify-content: right;
+/*    */
+/*} */
+/*#alertSection>div{*/
+/*    !*자식들의 수직높이를 맞추기 위해 억지로 쓴다.*!*/
+/*    display:flex;*/
+/*    align-items: center;*/
+/*    justify-content: right;*/
 
-    /*vertical-align 속성은 수직 정렬을 지정하는 속성입니다. 수직 정렬을 해야하기 때문에 
-    inline이나 inline-block 또는 table-cell 엘리먼트에만 적용됩니다. block에는 쓸 수 없다는 건 안 비밀~*/
-    /* vertical-align:middle;  */
-    /* line-height:50px; */
-}
+/*    !*vertical-align 속성은 수직 정렬을 지정하는 속성입니다. 수직 정렬을 해야하기 때문에 */
+/*    inline이나 inline-block 또는 table-cell 엘리먼트에만 적용됩니다. block에는 쓸 수 없다는 건 안 비밀~*!*/
+/*    !* vertical-align:middle;  *!*/
+/*    !* line-height:50px; *!*/
+/*}*/
 
-#alertSection>div>span{
-    display:inline-block;
-    width:70px;
-    height:50px; 
+/*#alertSection>div>span{*/
+/*    display:inline-block;*/
+/*    width:70px;*/
+/*    height:50px; */
 
-    line-height:50px;
+/*    line-height:50px;*/
 
-}
+/*}*/
 
-#alertSection>div>image{
-    display:inline-block;
-    width:48px;
-    height:48px;
-}
+/*#alertSection>div>image{*/
+/*    display:inline-block;*/
+/*    width:48px;*/
+/*    height:48px;*/
+/*}*/
 
 #containerButton{
     border-top: 1px solid #dddddd;
     border-bottom: 1px solid #dddddd;
     border-radius: 3px;
 
-    margin-top:10px;
+    /*margin-top:10px;*/
     margin-bottom:10px;
 
     width:100%;
@@ -280,7 +291,7 @@ body{
 
 #CommentSection{
     width:100%;
-    height:1100px;
+    /*height:1100px;*/
 
     margin-top:20px;
 
@@ -290,7 +301,7 @@ body{
 
 .comment{
     width:800px;
-    height:350px;
+    height:370px;
 
     margin: 10px auto;
 
@@ -309,6 +320,14 @@ body{
     https://www.inflearn.com/questions/241801/border-%EA%B2%B9%EC%B9%A8%EC%9D%80-%EC%96%B4%EB%96%BB%EA%B2%8C-%ED%95%B4%EA%B2%B0%ED%95%98%EB%82%98%EC%9A%94
     */
     /*margin-bottom:-1px;*/
+
+    /* white smoke*/
+    /*background-color:#F5F5F5;*/
+
+    /*아이보리*/
+    background-color:#FFFFF0;
+
+    padding:20px;
 }
 
 .comment:nth-child(2){
@@ -316,7 +335,7 @@ body{
    absolute가 아닐 경우에는 margin-left: -1px 을 지정해서 포개지도록 하면 됩니다.
    https://www.inflearn.com/questions/241801/border-%EA%B2%B9%EC%B9%A8%EC%9D%80-%EC%96%B4%EB%96%BB%EA%B2%8C-%ED%95%B4%EA%B2%B0%ED%95%98%EB%82%98%EC%9A%94
    */
-    margin-top:-10px;
+    margin-top:-11px;
 }
 
 .comment:nth-child(3){
@@ -324,27 +343,29 @@ body{
    absolute가 아닐 경우에는 margin-left: -1px 을 지정해서 포개지도록 하면 됩니다.
    https://www.inflearn.com/questions/241801/border-%EA%B2%B9%EC%B9%A8%EC%9D%80-%EC%96%B4%EB%96%BB%EA%B2%8C-%ED%95%B4%EA%B2%B0%ED%95%98%EB%82%98%EC%9A%94
    */
-    margin-top:-10px;
+    margin-top:-11px;
 }
 
 .commentHeader{
     width:100%;
-    height:50px;
+    height:60px;
 
     margin: 0 0 10px;
 }
 
 .commentHeader>div:nth-child(1){
-    height:20px;
+    height:25px;
     margin: 0 0 10px;
 
     font-size:20px;
+    line-height:25px;
 }
 
 .commentHeader>div:nth-child(2){
-    height:15px;
+    height:20px;
 
     font-size:15px;
+    line-height:20px;
 }
 
 .commentContent{
@@ -371,45 +392,45 @@ body{
 }
 
 
-.commentAlert{
-    width:100%;
-    height:30px;
+/*.commentAlert{*/
+/*    width:100%;*/
+/*    height:30px;*/
 
-    text-align:right;
+/*    text-align:right;*/
 
-    margin-bottom:20px;
-}
+/*    margin-bottom:20px;*/
+/*}*/
 
-.commentAlert>div{
-    /*자식들의 수직높이를 맞추기 위해 억지로 쓴다.*/
-    display:flex;
-    align-items: center;
-    justify-content: right;
+/*.commentAlert>div{*/
+/*    !*자식들의 수직높이를 맞추기 위해 억지로 쓴다.*!*/
+/*    display:flex;*/
+/*    align-items: center;*/
+/*    justify-content: right;*/
 
-    /*vertical-align 속성은 수직 정렬을 지정하는 속성입니다. 수직 정렬을 해야하기 때문에 
-    inline이나 inline-block 또는 table-cell 엘리먼트에만 적용됩니다. block에는 쓸 수 없다는 건 안 비밀~*/
-    /* vertical-align:middle;  */
-    /* line-height:50px; */
-}
+/*    !*vertical-align 속성은 수직 정렬을 지정하는 속성입니다. 수직 정렬을 해야하기 때문에 */
+/*    inline이나 inline-block 또는 table-cell 엘리먼트에만 적용됩니다. block에는 쓸 수 없다는 건 안 비밀~*!*/
+/*    !* vertical-align:middle;  *!*/
+/*    !* line-height:50px; *!*/
+/*}*/
 
-.commentAlert>div>span:nth-child(1){
-    display:inline-block;
-    width:70px;
-    height:30px; 
+/*.commentAlert>div>span:nth-child(1){*/
+/*    display:inline-block;*/
+/*    width:70px;*/
+/*    height:30px; */
 
-    line-height:30px;
+/*    line-height:30px;*/
 
-}
+/*}*/
 
-.commentAlert>div>span:nth-child(2){
-    display:inline-block;
-    width:30px;
-    height:30px;
+/*.commentAlert>div>span:nth-child(2){*/
+/*    display:inline-block;*/
+/*    width:30px;*/
+/*    height:30px;*/
 
-    background-repeat: no-repeat;
-    background-image: url('/resources/images/alert_icon.png');
-    background-size:contain;
-}
+/*    background-repeat: no-repeat;*/
+/*    background-image: url('/resources/images/alert_icon.png');*/
+/*    background-size:contain;*/
+/*}*/
 
 .commentButton{
     margin-top:10px;
@@ -439,12 +460,13 @@ body{
 
     margin-top:50px;
 
+    margin-bottom:50px;
 
-     /*자식들의 수직높이를 맞추기 위해 억지로 쓴다.*/
+    /*자식들의 수직높이를 맞추기 위해 억지로 쓴다.*/
     display:flex;
     align-items: center;
     justify-content: center;
- 
+
 
 }
 
@@ -455,7 +477,7 @@ body{
 
     margin-left:10px;
 
-    
+
     font-size: 16px;
     background-color:#F7E2E1;
     border:0;
