@@ -14,7 +14,7 @@ create table news (
 
 desc news;
 select * from news;
-select * from news where news_title='어르신 추운 겨울 감기 조심하세요';
+select * from news where news_title='마트 가는데 왜 vs 더 인상해야남산터널 통행료 공방';
 show table status where name = 'news';
 
 #truncate news;

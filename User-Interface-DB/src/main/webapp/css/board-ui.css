@@ -53,6 +53,22 @@ a {
     table-layout: fixed;
 }
 
+/*
+input value의 폰트 적용
+
+.class명 input[value="Log In"]{font-family:폰트;} 추가
+.login-form input[value="Log In"] {
+  font-family: cursive;
+}
+input의 value에도 폰트가 적용되었다. placeholder 따로 value 따로 적용되는듯? 한 번에 바뀌는 방법을 찾아봄
+ https://velog.io/@1703979/TIL01
+*/
+/*딱히 안예뻐..*/
+/*.button  input[value="글쓰기"]{*/
+/*    font-family: 'Dongle', sans-serif;*/
+/*    font-size:24px;*/
+/*}*/
+
 .board_list tr {
     border-bottom: 1px solid #ccc;
     /*기본적으로 table은 height를 고정해도 content에 따라 변하기 때문에
@@ -86,7 +102,7 @@ a {
 }
 
 .board_list .tit {
-    text-align: left;
+    text-align: center;
 }
 
 .board_list .tit:hover {
@@ -212,6 +228,7 @@ a {
     background: none;
     border: none;
     cursor: pointer;
+
 }
 
 .number li button.active {
