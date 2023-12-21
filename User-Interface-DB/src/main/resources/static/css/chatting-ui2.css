@@ -48,7 +48,7 @@ body{
     display:block;
 }
 
-/* 스크롤바 전체 영역 
+/* 스크롤바 전체 영역
 커스텀 스크롤바 스타일링을 하겠다는 기본 속성 이다. 이 설정이 없으면 다른 모든 것은 비활성화 된다.
 출처: https://inpa.tistory.com/entry/CSS-🌟-스크롤-바Scrollbar-꾸미기-속성-총정리 [Inpa Dev 👨‍💻:티스토리]
 */
@@ -65,18 +65,104 @@ body{
 }
 
 ::-webkit-scrollbar-thumb:hover {
-	background-color:#f095b7;
+    background-color:#f095b7;
 }
 
 /* 스크롤이 움직이는 뒷 배경 */
 ::-webkit-scrollbar-track {
-	background: #F7E2E1; /* 스크롤바 뒷 배경 색상 */
+    background: #F7E2E1; /* 스크롤바 뒷 배경 색상 */
+}
+
+/*출처: https://inpa.tistory.com/entry/CSS-📚-미디어-쿼리-반응형-레이아웃 [Inpa Dev 👨‍💻:티스토리]*/
+
+@media all and (min-device-height:0px) {
+    #chatting_section{
+        height:520px;
+    }
+
+    #chatting_contents{
+        height: 400px;
+    }
+}
+
+@media all and (min-device-height:730px) {
+    #chatting_section{
+        height:560px;
+    }
+
+    #chatting_contents{
+        height: 440px;
+    }
 }
 
 
+@media all and (min-device-height:770px) {
+    #chatting_section{
+        height:600px;
+    }
+
+    #chatting_contents{
+        height: 480px;
+    }
+}
+
+@media all and (min-device-height:810px)  {
+    #chatting_section{
+        height:640px;
+    }
+
+    #chatting_contents{
+        height: 520px;
+    }
+}
+
+@media all and (min-device-height:850px)  {
+    #chatting_section{
+        height:680px;
+    }
+
+    #chatting_contents{
+        height: 560px;
+    }
+}
+
+@media all and (min-device-height:890px)  {
+    #chatting_section{
+        height:720px;
+    }
+
+    #chatting_contents{
+        height: 600px;
+    }
+}
+
+@media all and (min-device-height:930px) {
+    #chatting_section{
+        height:760px;
+    }
+
+    #chatting_contents{
+        height: 640px;
+    }
+}
+
+@media all and (min-device-height:970px) {
+    #chatting_section{
+        height:800px;
+    }
+
+    #chatting_contents{
+        height: 680px;
+    }
+}
+
 #chatting_section{
     width:800px;
+
+    /*
+    미디어 쿼리를 적용할 속성은 주석처리를 한다. 있으면 적용이 안되기 때문
     height:520px;
+    */
 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
@@ -87,8 +173,28 @@ body{
     /*border-color: #F6F2F6  #E1D5D9  #B7A7AE ;*/
     /*border-width:3px;*/
     /*border-radius:10px;*/
-    
+
     font-family: 'Gowun Dodum', sans-serif;
+}
+
+#chatting_contents{
+    width:100%;
+
+    /*
+    미디어 쿼리를 적용할 속성은 주석처리를 한다. 있으면 적용이 안되기 때문
+    height: 400px;
+    */
+
+    margin:0 auto;
+    border-bottom: 3px solid #E1D5D9;
+    /*그 안의 컨텐츠의 크기가 주어진 공간을 넘어가는 경우에만 스크롤바가 생깁니다*/
+    overflow:auto;
+    /*가로글이 길어서 삐져나가도 줄바꿈 안생기게*/
+    /* white-space:nowrap; */
+
+    padding:10px;
+
+    background-color:white;
 }
 
 .chat-header {
@@ -110,49 +216,36 @@ body{
     font-weight:bold;
 }
 
-#chatting_contents{
-    width:100%;
-    height: 400px;
-    margin:0 auto;
-    border-bottom: 3px solid #E1D5D9; 
-    /*그 안의 컨텐츠의 크기가 주어진 공간을 넘어가는 경우에만 스크롤바가 생깁니다*/
-    overflow:auto;
-    /*가로글이 길어서 삐져나가도 줄바꿈 안생기게*/
-    /* white-space:nowrap; */
 
-    padding:10px;
-
-    background-color:white;
-}
 
 /*
 .chatbot{
     background-color:white;
-    
+
     overflow:auto;
 
     -ms-overflow-style: none;
-    
-    
+
+
 }
  .chatbot::-webkit-scrollbar{
    display:none;
  }
  */
 
- /*출처: https://wooaoe.tistory.com/49 [개발개발 울었다:티스토리]*/
+/*출처: https://wooaoe.tistory.com/49 [개발개발 울었다:티스토리]*/
 
 
- .chatbot>span{
+.chatbot>span{
     display:inline-block;
     margin:30px;
 
     position:relative;
 
     background-color:whitesmoke;
- }
+}
 
- .chatbot>span::after{
+.chatbot>span::after{
     position:absolute;
     left:0;
     bottom:-40px;
@@ -162,21 +255,21 @@ body{
     border-right: 20px solid transparent;
     border-bottom: 20px solid transparent;
     content: "";
- }
+}
 
- .user{
+.user{
     text-align:right;
- }
- .user>span{
+}
+.user>span{
     display:inline-block;
     margin:30px;
 
     position:relative;
 
     background-color:#F7E2E1;
- }
+}
 
- .user>span::after{
+.user>span::after{
     position:absolute;
     right:0;
     bottom:-19px;
@@ -186,9 +279,9 @@ body{
     border-right: 5px solid transparent;
     border-bottom: 10px solid transparent;
     content: "";
- }
+}
 
- #user_input_section{
+#user_input_section{
     width:100%;
     height:66px;
 
@@ -198,20 +291,20 @@ body{
 
     padding:10px;
 
-     background-color: #f8f8f8;
- }
+    background-color: #f8f8f8;
+}
 
- #user_input{
+#user_input{
     width:708px;
     height:100%;
 
-     line-height:46px;
+    line-height:46px;
 
     margin: 0 10px 0 0;
 
- }
+}
 
- #user_question{
+#user_question{
     width:100%;
     height:100%;
 
@@ -222,20 +315,20 @@ body{
     /*border:3px solid #E1D5D9;*/
     /*border-radius:10px;*/
 
-     border: 1px solid #ccc;
-     border-radius: 3px;
-     overflow-y: auto;
- }
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    overflow-y: auto;
+}
 
- #input_button_section{
+#input_button_section{
     width:61px;
     height:32px;
- }
+}
 
- #submit_button{
+#submit_button{
     width:100%;
     height:100%;
-     padding:4px 10px;
+    padding:4px 10px;
 
     /*background-color:#F7E2E1;*/
     /*border-radius:10px;*/
@@ -245,11 +338,11 @@ body{
     font-family: 'Gowun Dodum', sans-serif;
     font-size:20px;
 
-     line-height:24px;
+    line-height:24px;
 
-     background-color: #f095b7;
-     color: #fff;
-     border: none;
-     border-radius: 3px;
-     cursor: pointer;
- }
+    background-color: #f095b7;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}

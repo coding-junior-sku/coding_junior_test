@@ -73,10 +73,96 @@ body{
     background: #F7E2E1; /* 스크롤바 뒷 배경 색상 */
 }
 
+/*출처: https://inpa.tistory.com/entry/CSS-📚-미디어-쿼리-반응형-레이아웃 [Inpa Dev 👨‍💻:티스토리]*/
+
+@media all and (min-device-height:0px) {
+    #chatting_section{
+        height:520px;
+    }
+
+    #chatting_contents{
+        height: 400px;
+    }
+}
+
+@media all and (min-device-height:730px) {
+    #chatting_section{
+        height:560px;
+    }
+
+    #chatting_contents{
+        height: 440px;
+    }
+}
+
+
+@media all and (min-device-height:770px) {
+    #chatting_section{
+        height:600px;
+    }
+
+    #chatting_contents{
+        height: 480px;
+    }
+}
+
+@media all and (min-device-height:810px)  {
+    #chatting_section{
+        height:640px;
+    }
+
+    #chatting_contents{
+        height: 520px;
+    }
+}
+
+@media all and (min-device-height:850px)  {
+    #chatting_section{
+        height:680px;
+    }
+
+    #chatting_contents{
+        height: 560px;
+    }
+}
+
+@media all and (min-device-height:890px)  {
+    #chatting_section{
+        height:720px;
+    }
+
+    #chatting_contents{
+        height: 600px;
+    }
+}
+
+@media all and (min-device-height:930px) {
+    #chatting_section{
+        height:760px;
+    }
+
+    #chatting_contents{
+        height: 640px;
+    }
+}
+
+@media all and (min-device-height:970px) {
+    #chatting_section{
+        height:800px;
+    }
+
+    #chatting_contents{
+        height: 680px;
+    }
+}
 
 #chatting_section{
     width:800px;
+
+    /*
+    미디어 쿼리를 적용할 속성은 주석처리를 한다. 있으면 적용이 안되기 때문
     height:520px;
+    */
 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     border-radius: 5px;
@@ -89,6 +175,26 @@ body{
     /*border-radius:10px;*/
 
     font-family: 'Gowun Dodum', sans-serif;
+}
+
+#chatting_contents{
+    width:100%;
+
+    /*
+    미디어 쿼리를 적용할 속성은 주석처리를 한다. 있으면 적용이 안되기 때문
+    height: 400px;
+    */
+
+    margin:0 auto;
+    border-bottom: 3px solid #E1D5D9;
+    /*그 안의 컨텐츠의 크기가 주어진 공간을 넘어가는 경우에만 스크롤바가 생깁니다*/
+    overflow:auto;
+    /*가로글이 길어서 삐져나가도 줄바꿈 안생기게*/
+    /* white-space:nowrap; */
+
+    padding:10px;
+
+    background-color:white;
 }
 
 .chat-header {
@@ -110,20 +216,7 @@ body{
     font-weight:bold;
 }
 
-#chatting_contents{
-    width:100%;
-    height: 400px;
-    margin:0 auto;
-    border-bottom: 3px solid #E1D5D9;
-    /*그 안의 컨텐츠의 크기가 주어진 공간을 넘어가는 경우에만 스크롤바가 생깁니다*/
-    overflow:auto;
-    /*가로글이 길어서 삐져나가도 줄바꿈 안생기게*/
-    /* white-space:nowrap; */
 
-    padding:10px;
-
-    background-color:white;
-}
 
 /*
 .chatbot{
