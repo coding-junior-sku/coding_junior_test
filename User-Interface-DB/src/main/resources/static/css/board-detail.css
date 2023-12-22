@@ -295,8 +295,8 @@ button{
 
     margin-top:20px;
 
-    display :table;
-    border-collapse: collapse;
+    /*display :table;*/
+    /*border-collapse: collapse;*/
 }
 
 .comment{
@@ -305,8 +305,8 @@ button{
 
     margin: 10px auto;
 
-    border-top: 1px solid #dddddd;
-    border-bottom: 1px solid #dddddd;
+    border-top: 5px solid #dddddd;
+    border-bottom: 5px solid #dddddd;
 
     /*display : table-cell;*/
 
@@ -328,6 +328,8 @@ button{
     background-color:#FFFFF0;
 
     padding:20px;
+
+    box-shadow: 3px 3px 50px #e6e6e6;
 }
 
 .comment:nth-child(2){
@@ -335,7 +337,7 @@ button{
    absolute가 아닐 경우에는 margin-left: -1px 을 지정해서 포개지도록 하면 됩니다.
    https://www.inflearn.com/questions/241801/border-%EA%B2%B9%EC%B9%A8%EC%9D%80-%EC%96%B4%EB%96%BB%EA%B2%8C-%ED%95%B4%EA%B2%B0%ED%95%98%EB%82%98%EC%9A%94
    */
-    margin-top:-11px;
+    margin-top:-16px;
 }
 
 .comment:nth-child(3){
@@ -343,7 +345,7 @@ button{
    absolute가 아닐 경우에는 margin-left: -1px 을 지정해서 포개지도록 하면 됩니다.
    https://www.inflearn.com/questions/241801/border-%EA%B2%B9%EC%B9%A8%EC%9D%80-%EC%96%B4%EB%96%BB%EA%B2%8C-%ED%95%B4%EA%B2%B0%ED%95%98%EB%82%98%EC%9A%94
    */
-    margin-top:-11px;
+    margin-top:-16px;
 }
 
 .commentHeader{
@@ -359,6 +361,12 @@ button{
 
     font-size:20px;
     line-height:25px;
+
+    text-decoration-line: underline;
+    text-underline-position: under;
+    text-decoration-style:dashed;
+    text-decoration-color:	#FF7F50;
+    text-decoration-thickness:1px;
 }
 
 .commentHeader>div:nth-child(2){
@@ -366,6 +374,12 @@ button{
 
     font-size:15px;
     line-height:20px;
+
+    text-decoration-line: underline;
+    text-underline-position: under;
+    text-decoration-style:dashed;
+    text-decoration-color:	#FF7F50;
+    text-decoration-thickness:1px;
 }
 
 .commentContent{
@@ -388,6 +402,12 @@ button{
     출처: https://offbyone.tistory.com/326 [쉬고 싶은 개발자:티스토리]
     */
     white-space:pre;
+
+    text-decoration-line: underline;
+    text-underline-position: under;
+    text-decoration-style:dashed;
+    text-decoration-color:	#FF7F50;
+    text-decoration-thickness:1px;
 
 }
 
