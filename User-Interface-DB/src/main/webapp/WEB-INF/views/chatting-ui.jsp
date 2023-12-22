@@ -21,9 +21,9 @@
     <jsp:include page="./header.jsp" />
 
     <div id="chatting_section">
-        <div class="chat-header">
-            <h2>뉴스 키워드를 입력해 주세요</h2>
-        </div>
+<!--        <div class="chat-header">-->
+           <!--<h2>뉴스 키워드를 입력해 주세요</h2>-->
+        <!--</div>-->
         <div id="chatting_contents">
             <c:forEach var="chat" items="${chats}">
                 <c:choose>
@@ -61,7 +61,7 @@
         </div>
         <div id="user_input_section">
             <div id="user_input">
-                <textarea type="text" id="user_question" placeholder="Type your message..."></textarea>
+                <textarea type="text" id="user_question" placeholder="뉴스 키워드를 입력해 주세요."></textarea>
             </div>
             <div id="input_button_section"><button id="submit_button">send</button></div>
         </div>
