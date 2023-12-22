@@ -51,6 +51,11 @@ public class ChattingRestController {
         //사용자가 입력한 값을
         //db에서 일단 검색해서 있는지, 없는지 부터 파악한다.
         String newsKeyword=chatDTO.getWriteContent();
+
+        //textarea에서 입력하는 공백 종류들이 암묵적으로 딸려나오므로 정규화
+        newsKeyword= newsKeywordMakeRegex(newsKeyword);
+
+
         List<NewsDTO> newsList=newsService.findNews(newsKeyword);
 
 
@@ -135,8 +140,36 @@ public class ChattingRestController {
                 //이렇게 접근못함
                 //System.out.println("e.get('summary'):"+e.get("summary"));
 
+                //여기까지는 summary에서 문장들을 구분하는 \n이 잘 표시되어있다
                 System.out.println("e.getAsJsonObject():"+e.getAsJsonObject());
-                newsSummaryDTOList.get(i).setNewsSummary(e.getAsJsonObject().get("summary").getAsString());
+
+
+                System.out.println("e.getAsJsonObject().get(\"summary\") 출력:"+e.getAsJsonObject().get("summary"));
+
+                //근데 get("summary").getAsString()를 하는 순간, \n 이 없어지지만 출력은 한문장당 한줄로 나온다. dto에 넣을때는 다닥다닥 붙어서 넣어진다
+                System.out.println("e.getAsJsonObject().get(\"summary\").getAsString() 출력:"+e.getAsJsonObject().get("summary").getAsString());
+                //그러면 dto에 넣기 직전에 암묵적으로 숨겨진  \n을 <br>로 정규화해서 디비에 저장해서 화면에 나올때
+                // 요약 문장들에서 한 문장당 한줄에 하나씩 나오도록 하자.
+                String summaryOrigin=e.getAsJsonObject().get("summary").getAsString();
+                String summaryRegExp=summaryOrigin.replaceAll("\n", "<br/>");
+                newsSummaryDTOList.get(i).setNewsSummary(summaryRegExp);
+
+
+
+                //실패 실험구간------------------------------------------------------------------------------------
+//                e.getAsJsonObject().get("summary")값을 꺼낸후, \n을 <br>로 정규화해서 디비에 저장해서 화면에 나올때
+//                요약 문장들에서 한 문장당 한줄에 하나씩 나오도록 하자.
+//                String summaryOrigin= e.getAsJsonObject().get("summary").toString();
+//                String summaryRegExp=summaryOrigin.replaceAll("\n", "<br>");
+//                실패다. 이런식으로 들어간다=>요약:"올해 방일 외국인 중 한국인이 618만명으로 가장 많아올해 일본을 방문한 관광객 수가 코로나19 사태 이후 4년 만에 2000만 명을 넘었습니다.\n코로나19 감염 확산의 영향을 거의 받지 않은 2019년 11월 244만1274명과 거의 같은 수준을 회복했습니다.\n올해 111월 누적 방일 외국인 수는 2233만2000명으로 코로나19 사태 이래 4년 만에 연간 2000만 명대로 다시 올라섰습니다."
+//                toString()을 해봤자 jsonelement를 출력하는것이고 문자열 자체 의미인 ""이 아니라 ""을 json값으로 생각하는듯?
+                //실패 실험구간------------------------------------------------------------------------------------
+
+
+                //원본
+                //newsSummaryDTOList.get(i).setNewsSummary(e.getAsJsonObject().get("summary").getAsString());
+
+
                 i++;
             }
 
@@ -154,9 +187,9 @@ public class ChattingRestController {
             for(NewsSummaryDTO newsSummaryDTO :newsSummaryDTOList) {
                 //윈도우 개행문자 \r\n
                 //웹에서 인식할때 <br>로 인식해서 줄바꿈이 되도록
-                content += "뉴스기사:" + (count + 1) + "<br/>";
-                content += "제목:" + newsSummaryDTOList.get(count).getNewsTitle()+ "<br/>";
-                content +="요약:"+newsSummaryDTOList.get(count).getNewsSummary()+ "<br/>";
+                content += "뉴스기사:" + (count + 1) + "<br/><br/>";
+                content += "제목:" + newsSummaryDTOList.get(count).getNewsTitle()+ "<br/><br/>";
+                content +="요약:<br/>"+newsSummaryDTOList.get(count).getNewsSummary()+ "<br/><br/>";
                 content +="원문링크:<a style='text-decoration-line : none;' href='"+newsSummaryDTOList.get(count).getNewsLink()+"'>"+newsSummaryDTOList.get(count).getNewsLink()+"</a><br/>";
                 count = count + 1;
 
@@ -181,6 +214,25 @@ public class ChattingRestController {
 
     }
 
+
+    //뉴스 키워드 정규화 하는 함수
+    public String newsKeywordMakeRegex (String newsKeyword){
+        //textarea에서 데이터를 보낼때 공백이 생기면 키워드가 맞아도 공백때문에 db결과가 틀리다
+        System.out.println("newsKeyword:"+newsKeyword);
+        System.out.println("newsKeywordlength:"+newsKeyword.length());
+        //textarea에서 글을 엔터처서 줄바꿈을 하면 \r\n이 암묵적으로 생기고 <br>태그로 저장했다가 수정페이지에서는 \r\n으로
+        //다시 바꾸는 작업을 했었다.
+        //즉 \r\n이 보이지는 않지만 암묵적으로 붙어서 키워드 길이는 더길고 이걸 정규표현식으로 빈칸으로 바꾸면 되겠다.
+        newsKeyword=newsKeyword.replaceAll("\r\n", "");
+        //탭도 변환
+        newsKeyword=newsKeyword.replaceAll("\\t", "");
+        //스페이스도 변환
+        newsKeyword=newsKeyword.replaceAll("\\s", "");
+        System.out.println("newsKeyword:"+newsKeyword);
+        System.out.println("newsKeywordlength:"+newsKeyword.length());
+
+        return newsKeyword;
+    }
 
 //    @PostMapping("/chatbotInsertChat")
 //    public String chatbotInsertChat(@RequestBody ChatDTO chatDTO, HttpSession httpSession){

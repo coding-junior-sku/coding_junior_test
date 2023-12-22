@@ -151,9 +151,9 @@
                         for(let newsSummaryDTO of result) {
                                 //윈도우 개행문자 \r\n
                                 //웹에서 인식할때 <br>로 인식해서 줄바꿈이 되도록
-                                content += "뉴스기사:" + (count + 1) + "<br/>";
-                                content += "제목:" + newsSummaryDTO.newsTitle+ "<br/>";
-                                content +="요약:"+newsSummaryDTO.newsSummary+ "<br/>";
+                                content += "뉴스기사:" + (count + 1) + "<br/><br/>";
+                                content += "제목:" + newsSummaryDTO.newsTitle+ "<br/><br/>";
+                                content +="요약:<br/>"+newsSummaryDTO.newsSummary+ "<br/><br/>";
                                 content +="원문링크:<a style='text-decoration-line : none;' href='"+newsSummaryDTO.newsLink+"'>"+newsSummaryDTO.newsLink+"</a><br/>";
                                 count = count + 1;
 

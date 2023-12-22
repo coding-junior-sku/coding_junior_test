@@ -171,7 +171,7 @@
 }
 
 #chatting_section{
-    width:800px;
+    width:1400px;
 
     /*
     미디어 쿼리를 적용할 속성은 주석처리를 한다. 있으면 적용이 안되기 때문
@@ -300,7 +300,7 @@
     height:66px;
 
     display:flex;
-    justify-content: space-around;
+    justify-content: center;
     align-items:center;
 
     padding:10px;
