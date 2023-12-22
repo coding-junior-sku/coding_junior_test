@@ -107,6 +107,7 @@ input의 value에도 폰트가 적용되었다. placeholder 따로 value 따로 
 
 .board_list .tit:hover {
     text-decoration: underline;
+    text-underline-position: under;
 }
 
 .board_list_wrap .paging {
