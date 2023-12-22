@@ -14,7 +14,7 @@ create table news (
 
 desc news;
 select * from news;
-select * from news where news_title='마트 가는데 왜 vs 더 인상해야남산터널 통행료 공방';
+select * from news where news_title='폭설 제주공항 활주로 임시 폐쇄뱃길도 일부 차질';
 show table status where name = 'news';
 
 #truncate news;
