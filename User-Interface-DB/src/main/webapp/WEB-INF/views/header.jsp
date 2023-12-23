@@ -16,6 +16,7 @@
     <div id="chatting_header">
         <div id="cloud_logo" class="header_nav"><a href="/"></a></div>
         <div class="header_nav" onclick="isLogin(this)"><a href="/goChatting">챗봇과 상담</a></div>
+        <div class="header_nav" onclick="isLogin2(this)"><a href="/goBoardList">토론장</a></div>
         <c:choose>
             <c:when test="${sessionScope.loginId eq null}">
                 <div class="header_nav"><a href="/goLogin">로그인</a></div>
@@ -26,9 +27,9 @@
         </c:choose>
 
 
-        <div class="header_nav"><a href="/goJoin">회원가입</a></div>
-        <div class="header_nav" onclick="isLogin2(this)"><a href="/goBoardList">토론장</a></div>
-<%--        <div class="header_nav"><a href="#">관리자 전용</a></div>--%>
+<!--        <div class="header_nav"><a href="/goJoin">회원가입</a></div>-->
+<!--        <div class="header_nav"><a href="#">관리자 전용</a></div>-->
+
     </div>
 
 </body>
