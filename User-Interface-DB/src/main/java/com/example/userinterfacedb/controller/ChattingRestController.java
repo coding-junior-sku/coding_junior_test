@@ -152,7 +152,11 @@ public class ChattingRestController {
                 // 요약 문장들에서 한 문장당 한줄에 하나씩 나오도록 하자.
                 String summaryOrigin=e.getAsJsonObject().get("summary").getAsString();
                 String summaryRegExp=summaryOrigin.replaceAll("\n", "<br/>");
-                newsSummaryDTOList.get(i).setNewsSummary(summaryRegExp);
+
+                //키워드인곳에 감싸는 태그를 추가하여 그 태그에 스타일을 줘서 키워드를 표시하자.
+                String plusMarker=summaryRegExp.replaceAll(newsKeyword,"<span style='background-color:#ffee58;'>"+newsKeyword+"</span>");
+
+                newsSummaryDTOList.get(i).setNewsSummary(plusMarker);
 
 
 
