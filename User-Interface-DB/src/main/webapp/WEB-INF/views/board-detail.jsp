@@ -222,6 +222,7 @@ function showCommentList(result){
             let date = new Date(commentDTO.writeTime);
             let format_date=new Date(date.getTime() + TIME_ZONE).toISOString().replace('T', ' ').slice(0, -5);
             oneComment+='<div class="commentHeader"><div>'+commentDTO.writerLoginId+'</div><div>'+format_date+'</div></div>';
+
             oneComment+='<div class="commentContent" data-comment-number="'+commentDTO.id+'">';
                 oneComment+=commentDTO.content;
             oneComment+='</div>';
@@ -445,6 +446,12 @@ function updateOk(event,currentCommentNum){
     <%--    page:globalThis.page--%>
     <%--},showCommentList);--%>
     let changeContent=$('textarea[data-comment-number='+currentCommentNum+']').val();
+    //input type hidden을 넣은 이유는 나중에 textarea로 바꿀때 contents()로 접근하는데
+    //수정할때 아무것도 입력안하면 또 수정할때이게 빈칸이라 오류가 난다
+    if(changeContent==''){
+        alert('내용이 없는 상태로 수정완료를 하지 못합니다.');
+        return;
+    }
     changeContent=changeContent.replace(/\n/g, "<br>");
     changeContent=changeContent.replace(/\r\n/g, "<br>");
     $('textarea[data-comment-number='+currentCommentNum+']').val(changeContent);

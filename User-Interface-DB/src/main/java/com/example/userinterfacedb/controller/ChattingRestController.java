@@ -143,7 +143,7 @@ public class ChattingRestController {
                 //여기까지는 summary에서 문장들을 구분하는 \n이 잘 표시되어있다
                 System.out.println("e.getAsJsonObject():"+e.getAsJsonObject());
 
-
+                //알고보면 jsonelement를 리턴하는데 암묵적인 toString으로 출력이 가능한것이다.
                 System.out.println("e.getAsJsonObject().get(\"summary\") 출력:"+e.getAsJsonObject().get("summary"));
 
                 //근데 get("summary").getAsString()를 하는 순간, \n 이 없어지지만 출력은 한문장당 한줄로 나온다. dto에 넣을때는 다닥다닥 붙어서 넣어진다
@@ -163,6 +163,7 @@ public class ChattingRestController {
                 //실패 실험구간------------------------------------------------------------------------------------
 //                e.getAsJsonObject().get("summary")값을 꺼낸후, \n을 <br>로 정규화해서 디비에 저장해서 화면에 나올때
 //                요약 문장들에서 한 문장당 한줄에 하나씩 나오도록 하자.
+                //알고보면 jsonelement를 리턴하는데 toString으로 출력이 가능한것이다.
 //                String summaryOrigin= e.getAsJsonObject().get("summary").toString();
 //                String summaryRegExp=summaryOrigin.replaceAll("\n", "<br>");
 //                실패다. 이런식으로 들어간다=>요약:"올해 방일 외국인 중 한국인이 618만명으로 가장 많아올해 일본을 방문한 관광객 수가 코로나19 사태 이후 4년 만에 2000만 명을 넘었습니다.\n코로나19 감염 확산의 영향을 거의 받지 않은 2019년 11월 244만1274명과 거의 같은 수준을 회복했습니다.\n올해 111월 누적 방일 외국인 수는 2233만2000명으로 코로나19 사태 이래 4년 만에 연간 2000만 명대로 다시 올라섰습니다."
